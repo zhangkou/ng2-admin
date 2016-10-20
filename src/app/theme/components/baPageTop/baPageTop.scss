@@ -63,6 +63,23 @@ a.al-logo {
   }
 }
 
+.questions-section {
+  position: absolute;
+  right: 200px;
+  top: 0;
+  height: $top-height;
+  line-height: $top-height;
+  color: $default;
+  font-weight: $font-light;
+
+  a {
+    color: $primary;
+    &:active, &:hover, &:focus {
+      color: $primary-light;
+    }
+  }
+}
+
 a.refresh-data {
   color: $sidebar-text;
   font-size: 13px;
@@ -145,6 +162,12 @@ a.collapse-menu-link {
     padding: 0;
     margin: 0 0 0 -3px;
     height: 27px;
+  }
+}
+
+@media screen and (max-width: $resM) {
+  .questions-section {
+    display: none;
   }
 }
 
