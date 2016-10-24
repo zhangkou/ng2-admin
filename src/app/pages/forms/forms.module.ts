@@ -16,6 +16,7 @@ import { GroupInputs } from './components/inputs/components/groupInputs';
 import { CheckboxInputs } from './components/inputs/components/checkboxInputs';
 import { Rating } from './components/inputs/components/ratinginputs';
 import { SelectInputs } from './components/inputs/components/selectInputs';
+import { DualList } from './components/inputs/components/dualList';
 
 import { InlineForm } from './components/layouts/components/inlineForm';
 import { BlockForm } from './components/layouts/components/blockForm';
@@ -45,7 +46,8 @@ import { WithoutLabelsForm } from './components/layouts/components/withoutLabels
     BlockForm,
     HorizontalForm,
     BasicForm,
-    WithoutLabelsForm
+    WithoutLabelsForm,
+    DualList
   ]
 })
 export default class FormsModule {

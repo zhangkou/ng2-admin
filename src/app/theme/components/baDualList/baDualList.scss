@@ -1,0 +1,70 @@
+@import '../../sass/conf/conf';
+
+$background-color: rgba($default, 0.15);
+
+.ba-dual-list {
+  background-color: $background-color;
+  border-radius: 4px;
+  border: 1px solid $input-border;
+  padding: 0;
+
+  .body {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    .list-header {
+      border-bottom: 1px solid $input-border;
+      padding: 10px;
+
+      .title {
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+    }
+
+    .controls-wrapper {
+      display: flex;
+      align-items: center;
+      border-right: 1px solid $input-border;
+      border-left: 1px solid $input-border;
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px;
+
+        .btn-control {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .column {
+      align-self: flex-start;
+      margin: 0;
+      width: 48%;
+      height: auto;
+
+      .list-select {
+        outline: none;
+        border: 0;
+        background-color: transparent;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        .clause {
+          color: $default-text;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 2500px) {
+  .column {
+    width: 45%;
+  }
+}

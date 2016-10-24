@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   template: require('./selectInputs.html')
 })
 export class SelectInputs {
-  constructor() { }
+  constructor() {
+  }
 }

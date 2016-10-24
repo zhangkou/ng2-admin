@@ -1,0 +1,52 @@
+<div class="ba-dual-list">
+  <div class="body">
+
+    <div class="column left-column">
+      <div class="list-header">
+        <div class="title">
+          <span>{{options.left.title}}</span>
+        </div>
+        <div class="filter">
+          <input class="filter-input form-control" [(ngModel)]="leftFilterMask" placeholder="Filter">
+        </div>
+      </div>
+      <div class="list">
+        <select #leftColumn multiple [size]="getSize(data.left)" [(ngModel)]="selected" class="list-select">
+          <option *ngFor="let item of getTitles(data.left) | BaMask:leftFilterMask" [value]="item" class="clause">
+            {{item}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="controls-wrapper">
+      <div class="controls">
+        <button class="btn btn-default btn-control" (click)="moveToRight()">
+          <i class="ion-arrow-right-a"></i>
+        </button>
+        <button class="btn btn-default btn-control" (click)="moveToLeft()">
+          <i class="ion-arrow-left-a"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="column right-column">
+      <div class="list-header">
+        <div class="title">
+          <span>{{options.right.title}}</span>
+        </div>
+        <div class="filter">
+          <input class="filter-input form-control"  [(ngModel)]="rigthFilterMask" placeholder="Filter">
+        </div>
+      </div>
+      <div class="list">
+        <select #rightColumn multiple [size]="getSize(data.right)" [(ngModel)]="selected" class="list-select">
+          <option *ngFor="let item of getTitles(data.right) | BaMask:rigthFilterMask" [value]="item" class="clause">
+            {{item}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+</div>
