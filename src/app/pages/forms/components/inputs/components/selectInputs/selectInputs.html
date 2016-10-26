@@ -1,17 +1,11 @@
 <div class="form-group">
-  <label for="exampleSelect1">Example select</label>
-  <select class="form-control" id="exampleSelect1">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>
+  <label>Multiple Select</label>
+  <ba-multi-select [data]="data" [size]="5" (select)="onSelect($event)"></ba-multi-select>
 </div>
 
 <div class="form-group">
-  <label for="exampleSelect2">Example multiple select</label>
-  <select multiple class="form-control" id="exampleSelect2">
+  <label for="exampleSelect1">Example select</label>
+  <select class="form-control" id="exampleSelect1">
     <option>1</option>
     <option>2</option>
     <option>3</option>

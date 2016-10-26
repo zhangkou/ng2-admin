@@ -1,0 +1,5 @@
+<div class="list">
+  <select multiple class="list-select" [size]="size" [(ngModel)]="selected">
+    <option class="list-option" *ngFor="let option of data" [value]="option">{{option.title}}</option>
+  </select>
+</div>

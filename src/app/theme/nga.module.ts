@@ -26,7 +26,8 @@ import {
   BaPageTop,
   BaPictureUploader,
   BaSidebar,
-  BaDualList
+  BaDualList,
+  BaMultiSelect
 } from './components';
 
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
@@ -70,7 +71,8 @@ const NGA_COMPONENTS = [
   BaPageTop,
   BaPictureUploader,
   BaSidebar,
-  BaDualList
+  BaDualList,
+  BaMultiSelect
 ];
 
 const NGA_DIRECTIVES = [

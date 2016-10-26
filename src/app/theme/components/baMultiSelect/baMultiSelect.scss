@@ -1,0 +1,23 @@
+@import "../../../theme/sass/conf/conf";
+
+$background-color: rgba($default, 0.15);
+
+.list {
+  width: 100%;
+  border: 1px solid $input-border;
+  border-radius: 4px;
+
+  .list-select {
+    width: 100%;
+    border: none;
+    outline: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $background-color;
+
+    .list-option {
+      padding: 10px;
+      color: $default-text;
+    }
+  }
+}
