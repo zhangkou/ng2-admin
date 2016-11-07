@@ -29,6 +29,7 @@ export class Login {
     if (this.form.valid) {
       // your code goes here
       // console.log(values);
+      console.log(this.email) ;
     }
   }
 }

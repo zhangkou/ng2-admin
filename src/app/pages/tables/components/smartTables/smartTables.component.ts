@@ -60,6 +60,7 @@ export class SmartTables {
 
   constructor(protected service: SmartTablesService) {
     this.service.getData().then((data) => {
+      //this.source.setPaging(3,3, true) ;
       this.source.load(data);
     });
   }
