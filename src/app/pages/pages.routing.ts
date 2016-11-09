@@ -23,7 +23,8 @@ const routes: Routes = [
       { path: 'forms', loadChildren: () => System.import('./forms/forms.module') },
       { path: 'tables', loadChildren: () => System.import('./tables/tables.module') },
       { path: 'maps', loadChildren: () => System.import('./maps/maps.module') },
-      { path: 'new',  loadChildren: () => System.import('./new/new.module') }
+      { path: 'new',  loadChildren: () => System.import('./new/new.module') },
+      { path: 'task',  loadChildren: () => System.import('./task/task.module') }
     ]
   }
 ];

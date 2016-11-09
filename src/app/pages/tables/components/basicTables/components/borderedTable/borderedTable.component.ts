@@ -13,4 +13,8 @@ export class BorderedTable {
   constructor(private _basicTablesService: BasicTablesService) {
     this.metricsTableData = _basicTablesService.metricsTableData;
   }
+
+  xx() {
+    console.log("testing ....") ;
+  }
 }

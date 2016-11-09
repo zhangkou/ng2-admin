@@ -10,6 +10,7 @@ import { routing } from './new.routing';
   ],
   declarations: [
     NewComponent
-  ]
+  ], 
+  providers: []
 })
 export default class NewModule {}

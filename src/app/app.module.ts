@@ -57,6 +57,7 @@ type StoreType = {
 export class AppModule {
 
   constructor(public appRef: ApplicationRef, public appState: AppState) {
+    console.log("Hello Wrold ...") ;
   }
 
   hmrOnInit(store: StoreType) {

@@ -114,7 +114,8 @@ export class SmartTablesService {
       lastName: 'Jirair',
       username: '@garegin',
       email: 'garegin@gmail.com',
-      age: '40'
+      age: '40',
+      action: '<button type="button" class="btn btn-info">Info</button>'
     },
     {
       id: 15,
@@ -122,7 +123,8 @@ export class SmartTablesService {
       lastName: 'Bedros',
       username: '@krikor',
       email: 'krikor@yandex.ru',
-      age: '32'
+      age: '32',
+      action: '<a (click) = "alert(this)">Infox</a>'
     },
     {
       "id": 16,

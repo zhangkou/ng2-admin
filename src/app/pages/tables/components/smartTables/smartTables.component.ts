@@ -52,6 +52,10 @@ export class SmartTables {
       age: {
         title: 'Age',
         type: 'number'
+      },
+      action: {
+        title: 'action',
+        type: 'html'
       }
     }
   };
