@@ -1,6 +1,8 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {EmailValidator, EqualPasswordsValidator} from '../../theme/validators';
+import { Router } from '@angular/router';
+import { Http, Headers } from '@angular/http';
 
 @Component({
   selector: 'register',
@@ -11,37 +13,64 @@ import {EmailValidator, EqualPasswordsValidator} from '../../theme/validators';
 export class Register {
 
   public form:FormGroup;
+  public companyName: AbstractControl ;
   public name:AbstractControl;
   public email:AbstractControl;
-  public password:AbstractControl;
-  public repeatPassword:AbstractControl;
-  public passwords:FormGroup;
 
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder) {
+  constructor(fb:FormBuilder, protected router: Router, protected http: Http) {
 
     this.form = fb.group({
+      'companyName': [''],
       'name': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      'email': ['', Validators.compose([Validators.required, EmailValidator.validate])],
-      'passwords': fb.group({
-        'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-        'repeatPassword': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
-      }, {validator: EqualPasswordsValidator.validate('password', 'repeatPassword')})
+      'email': ['', Validators.compose([Validators.required, EmailValidator.validate])]
     });
 
     this.name = this.form.controls['name'];
     this.email = this.form.controls['email'];
-    this.passwords = <FormGroup> this.form.controls['passwords'];
-    this.password = this.passwords.controls['password'];
-    this.repeatPassword = this.passwords.controls['repeatPassword'];
+    this.companyName = this.form.controls['companyName'] ;
   }
 
   public onSubmit(values:Object):void {
     this.submitted = true;
     if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
+      let nameValue         = this.name.value ;
+      let emailValue        = this.email.value ;
+      let companyNameValue  = this.companyName.value ;  
+
+      this.regist(companyNameValue, nameValue, emailValue)
+        .then(data => {
+          console.log(data) ;
+        })
+        .catch(error => {
+          console.log(error) ;
+        });
+
     }
   }
+
+  regist(companyName: String, name: String, email: String) {
+        let creds = "http://api.oryzasoft.com/rs/v1/admin/company";
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        return new Promise((resolve, reject) => {
+            this.http.post(creds,
+                {
+                  "email": email,
+                  "name": name,
+                  "companyName": companyName
+                },
+                { headers: headers })
+                .map(res => res.json())
+                .subscribe(data => {
+                    if (data.message_rest.type == 'S') {
+                        resolve(data);
+                    }else{
+                        reject(data.message_rest.text);
+                    }
+                });
+        });
+    }
 }
