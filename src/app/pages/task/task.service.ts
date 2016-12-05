@@ -32,6 +32,7 @@ export class CustomServerDataSource extends LocalDataSource {
     if (this.pagingConf && this.pagingConf['page'] && this.pagingConf['perPage']) {
       url += `pageIndex=${this.pagingConf['page']}&pageSize=${this.pagingConf['perPage']}`;
     }
+    
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('token', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ3ODU5NTM5NTkxMywiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.g-SFnB0JwWPE3tVsamQW4acP2lR4TxY7wNpgdVO4pnQ");
