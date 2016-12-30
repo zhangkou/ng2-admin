@@ -24,7 +24,10 @@ const routes: Routes = [
       { path: 'tables', loadChildren: () => System.import('./tables/tables.module') },
       { path: 'maps', loadChildren: () => System.import('./maps/maps.module') },
       { path: 'new',  loadChildren: () => System.import('./new/new.module') },
-      { path: 'task',  loadChildren: () => System.import('./task/task.module') }
+      { path: 'task',  loadChildren: () => System.import('./task/task.module') },
+      { path: 'event',  loadChildren: () => System.import('./event/event.module') },
+      { path: 'rfcparam/:id',  loadChildren: () => System.import('./event/rfcparam/rfcparam.module') },
+      { path: 'sapfield/:id',  loadChildren: () => System.import('./event/sapfield/sapfield.module') }
     ]
   }
 ];

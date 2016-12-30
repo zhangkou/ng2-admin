@@ -1,0 +1,74 @@
+<div class="horizontal-scroll">
+  <table class="table table-condensed">
+    <thead>
+    <tr class="black-muted-bg">
+      <th class="table-id">#</th>
+      <th>P</th>
+      <th>FIELDNAME</th>
+      <th>DDTEXT</th>
+      <th>K</th>
+      <th>K</th>
+      <th>EXC</th>
+      <th>LKP</th>
+      <th>SEQ_NO</th>
+      <th>LKP_TABLE</th>
+      <th>LKP_KEY</th>
+      <th>LKP_LANG</th>
+      <th>LKP_F1</th>
+      <th>LKP_F2</th>
+      <th>ROLLNAME</th>
+      <th>DOMNAME</th>
+      <th>CHECKTABLE</th>
+      <th>LENG</th>
+      <th>DM_LAST_CHANGE_TIME</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tdata of tableDatas">
+      <td class="table-id">#</td>
+      <td>{{ tdata.POSITION }}</td>
+      <td>{{ tdata.FIELDNAME }}</td>
+      <td>{{ tdata.DDTEXT }}</td>
+      <td>{{ tdata.KEYFLAG }}</td>
+      <td>
+        <input type="checkbox" name="DM_KEYFLAG" id="DM_KEYFLAG"
+                [checked]="tdata.DM_KEYFLAG == toggles[0].value" 
+                (change)="$event.target.checked? (tdata.DM_KEYFLAG = toggles[0].value) : (tdata.DM_KEYFLAG = toggles[1].value)">
+      </td>
+      <td>
+        <input type="checkbox" name="DM_EXCLUDE_FLAG" id="DM_EXCLUDE_FLAG"
+                [checked]="tdata.DM_EXCLUDE_FLAG == toggles[0].value" 
+                (change)="$event.target.checked? (tdata.DM_EXCLUDE_FLAG = toggles[0].value) : (tdata.DM_EXCLUDE_FLAG = toggles[1].value)">
+      </td>
+      <td>
+        <input type="checkbox" name="DM_LKP_FLAG" id="DM_LKP_FLAG"
+                [checked]="tdata.DM_LKP_FLAG == toggles[0].value" 
+                (change)="$event.target.checked? (tdata.DM_LKP_FLAG = toggles[0].value) : (tdata.DM_LKP_FLAG = toggles[1].value)">
+      </td>
+      <td>
+        <input type="text" class="form-control form-control-sm" name="DM_SEQ_NO" id="DM_SEQ_NO" placeholder="{{ tdata.DM_SEQ_NO }}" [(ngModel)]="tdata.DM_SEQ_NO">
+      </td>
+      <td>
+        <input type="text" class="form-control form-control-sm" name="DM_LKP_TEXTTABLE" id="DM_LKP_TEXTTABLE" placeholder="{{ tdata.DM_LKP_TEXTTABLE }}" [(ngModel)]="tdata.DM_LKP_TEXTTABLE">
+      </td>
+      <td>
+        <input type="text" class="form-control form-control-sm" name="DM_LKP_KEYFIELD" id="DM_LKP_KEYFIELD" placeholder="{{ tdata.DM_LKP_KEYFIELD }}" [(ngModel)]="tdata.DM_LKP_KEYFIELD">
+      </td>
+      <td>
+        <input type="text" class="form-control form-control-sm" name="DM_LKP_LANGFIELD" id="DM_LKP_LANGFIELD" placeholder="{{ tdata.DM_LKP_LANGFIELD }}" [(ngModel)]="tdata.DM_LKP_LANGFIELD">
+      </td>
+      <td>
+        <input type="text" class="form-control form-control-sm" name="DM_LKP_FOREIGNKEY1" id="DM_LKP_FOREIGNKEY1" placeholder="{{ tdata.DM_LKP_FOREIGNKEY1 }}" [(ngModel)]="tdata.DM_LKP_FOREIGNKEY1">
+      </td>
+      <td>
+        <input type="text" class="form-control form-control-sm" name="DM_LKP_FOREIGNKEY2" id="DM_LKP_FOREIGNKEY2" placeholder="{{ tdata.DM_LKP_FOREIGNKEY2 }}" [(ngModel)]="tdata.DM_LKP_FOREIGNKEY2">
+      </td>
+      <td>{{ tdata.ROLLNAME }}</td>
+      <td>{{ tdata.DOMNAME }}</td>
+      <td>{{ tdata.CHECKTABLE }}</td>
+      <td>{{ tdata.LENG }}</td>
+      <td>{{ tdata.DM_LAST_CHANGE_TIME }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

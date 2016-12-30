@@ -1,0 +1,18 @@
+<div class="horizontal-scroll">
+  <table class="table table-condensed">
+    <thead>
+    <tr class="black-muted-bg">
+      <th class="table-id">#</th>
+      <th>FUNCNAME</th>
+      <th>EVENT_NUMBER</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tdata of tableDatas">
+      <td class="table-id">#</td>
+      <td><a routerLink="/pages/rfcparam/{{ tdata.FUNCNAME }}" routerLinkActive="active">{{ tdata.FUNCNAME }}</a></td>
+      <td>{{ tdata.EVENT_NUMBER }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
