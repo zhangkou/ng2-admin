@@ -1,18 +1,52 @@
-<div class="horizontal-scroll">
-  <table class="table table-condensed">
-    <thead>
-    <tr class="black-muted-bg">
-      <th class="table-id">#</th>
-      <th>FUNCNAME</th>
-      <th>EVENT_NUMBER</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let tdata of tableDatas">
-      <td class="table-id">#</td>
-      <td><a routerLink="/pages/rfcparam/{{ tdata.FUNCNAME }}" routerLinkActive="active">{{ tdata.FUNCNAME }}</a></td>
-      <td>{{ tdata.EVENT_NUMBER }}</td>
-    </tr>
-    </tbody>
-  </table>
+<div class="widgets">
+
+  
+  <div class="row">
+    <div class="col-md-12">
+      <ba-card title="Event" baCardClass="with-scroll table-panel">
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>FUNCNAME</th>
+                <th>EVENT_NUMBER</th>
+                <th>EVENT_DES</th>
+                <th>DELETIONFLAG</th>
+                <th>CHANGED_BY</th>
+                <th>LAST_CHANGE_TIME</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas">
+                <td class="table-id">
+                  <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                </td>
+                <td><a routerLink="/pages/rfcparam/{{ tdata.FUNCNAME }}" routerLinkActive="active">{{ tdata.FUNCNAME }}</a></td>
+                <td>{{ tdata.EVENT_NUMBER }}</td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="EVENT_DES" id="EVENT_DES" 
+                          #EVENT_DES
+                          placeholder="{{ tdata.EVENT_DES }}" 
+                          [(ngModel)]="tdata.EVENT_DES"
+                          (change)="inputChanged(EVENT_DES, tdata)">
+                </td>
+                <td>
+                  <input type="checkbox" name="DELETIONFLAG" id="DELETIONFLAG"
+                          #DELETIONFLAG
+                          [checked]="tdata.DELETIONFLAG == toggles[0].value" 
+                          (change)="checkboxChanged(DELETIONFLAG, tdata)">
+                </td>
+                <td>{{ tdata.CHANGED_BY }}</td>
+                <td>{{ tdata.LAST_CHANGE_TIME }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+       </ba-card>
+    </div>
+  </div>
+
+
+
 </div>

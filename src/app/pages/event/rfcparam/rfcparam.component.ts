@@ -34,8 +34,18 @@ export class RfcparamComponent {
  }
 
  xx(value){
+     this.tableDatas.push({}) ;
      console.log(value) ;
  }
+
+ checkboxChanged(target, tdata){
+      target.checked? (tdata[target.name] = this.toggles[0].value) : (tdata[target.name] = this.toggles[1].value);
+      tdata.saved=true ;
+  }
+
+  inputChanged(target, tdata){
+      tdata.saved=true ;
+  }
 
   getData(sourceUrl) {
         let url = "http://api.oryzasoft.com/rs/v1/"  + sourceUrl;

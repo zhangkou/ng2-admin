@@ -1,46 +1,61 @@
-<div class="horizontal-scroll">
-  <table class="table table-condensed">
-    <thead>
-    <tr class="black-muted-bg">
-      <th class="table-id">#</th>
-      <th>FUNCNAME</th>
-      <th>PARAMTYPE</th>
-      <th>POSITION</th>
-      <th>PARAMETER</th>
-      <th>STRUCTURE</th>
-      <th>DM_EXCLUDE_FLAG</th>
-      <th>OPTIONAL</th>
-      <th>DEFAULTVAL</th>
-      <th>Owner</th>
-      <th>CreatedBy</th>
-      <th>ModifiedBy</th>
-      <th>CreatedAt</th>
-      <th>ModifiedAt</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let tdata of tableDatas">
-      <td class="table-id">#</td>
-      <td><a routerLink="/pages/sapfield/{{ tdata.STRUCTURE }}" routerLinkActive="active">{{ tdata.FUNCNAME }}</a></td>
-      <td>{{ tdata.PARAMTYPE }}</td>
-      <td>{{ tdata.POSITION }}</td>
-      <td>{{ tdata.PARAMETER }}</td>
-      <td>{{ tdata.STRUCTURE }}</td>
-      <td>
-        <input type="checkbox" name="DM_EXCLUDE_FLAG" id="DM_EXCLUDE_FLAG"
-                [checked]="tdata.DM_EXCLUDE_FLAG == toggles[0].value" 
-                (change)="$event.target.checked? (tdata.DM_EXCLUDE_FLAG = toggles[0].value) : (tdata.DM_EXCLUDE_FLAG = toggles[1].value)">
-      </td>
-      <td>{{ tdata.OPTIONAL }}</td>
-      <td>{{ tdata.DEFAULTVAL }}</td>
-      <td>{{ tdata.Owner }}</td>
-      <td>{{ tdata.CreatedBy }}</td>
-      <td>{{ tdata.ModifiedBy }}</td>
-      <td>{{ tdata.CreatedAt }}</td>
-      <td>{{ tdata.ModifiedAt }}</td>
-      <td><button type="button" class="btn btn-default" (click)="xx(tdata)">Save</button></td>
-    </tr>
-    </tbody>
-  </table>
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <ba-card title="Rfc Paremeter" baCardClass="with-scroll table-panel">
+
+
+        <div class="horizontal-scroll">
+          <table class="table table-condensed">
+            <thead>
+            <tr class="black-muted-bg">
+              <th class="table-id">#</th>
+              <th>FUNCNAME</th>
+              <th>PARAMTYPE</th>
+              <th>POSITION</th>
+              <th>PARAMETER</th>
+              <th>STRUCTURE</th>
+              <th>DM_EXCLUDE_FLAG</th>
+              <th>OPTIONAL</th>
+              <th>DEFAULTVAL</th>
+              <th>Owner</th>
+              <th>CreatedBy</th>
+              <th>ModifiedBy</th>
+              <th>CreatedAt</th>
+              <th>ModifiedAt</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tdata of tableDatas">
+              <td class="table-id">
+                <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+              </td>
+              <td><a routerLink="/pages/sapfield/{{ tdata.STRUCTURE }}" routerLinkActive="active">{{ tdata.FUNCNAME }}</a></td>
+              <td>{{ tdata.PARAMTYPE }}</td>
+              <td>{{ tdata.POSITION }}</td>
+              <td>{{ tdata.PARAMETER }}</td>
+              <td style="white-space: nowrap;">{{ tdata.STRUCTURE }}</td>
+              <td>
+                <input type="checkbox" name="DM_EXCLUDE_FLAG" id="DM_EXCLUDE_FLAG"
+                        #DM_EXCLUDE_FLAG
+                        [checked]="tdata.DM_EXCLUDE_FLAG == toggles[0].value" 
+                        (change)="checkboxChanged(DM_EXCLUDE_FLAG, tdata)">
+              </td>
+              <td>{{ tdata.OPTIONAL }}</td>
+              <td>{{ tdata.DEFAULTVAL }}</td>
+              <td>{{ tdata.Owner }}</td>
+              <td>{{ tdata.CreatedBy }}</td>
+              <td>{{ tdata.ModifiedBy }}</td>
+              <td>{{ tdata.CreatedAt }}</td>
+              <td>{{ tdata.ModifiedAt }}</td>
+              <td><button type="button" class="btn btn-default" (click)="xx(tdata)">Save</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </ba-card>
+    </div>
+  </div>
 </div>
