@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-md-12">
-      <ba-card title="Event" baCardClass="with-scroll table-panel">
+      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="create($event)" (update)="update($event)" (refresh)="refresh($event)">
           <div class="horizontal-scroll">
             <table class="table table-condensed">
               <thead>
@@ -18,7 +18,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of tableDatas">
+              <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter">
                 <td class="table-id">
                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
                 </td>
@@ -43,7 +43,7 @@
               </tbody>
             </table>
           </div>
-       </ba-card>
+       </ory-card>
     </div>
   </div>
 
