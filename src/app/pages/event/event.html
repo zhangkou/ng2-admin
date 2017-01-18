@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-md-12">
-      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="create($event)" (update)="update($event)" (refresh)="refresh($event)">
+      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
           <div class="horizontal-scroll">
             <table class="table table-condensed">
               <thead>
@@ -38,7 +38,7 @@
                           (change)="checkboxChanged(DELETIONFLAG, tdata)">
                 </td>
                 <td>{{ tdata.CHANGED_BY }}</td>
-                <td>{{ tdata.LAST_CHANGE_TIME }}</td>
+                <td>{{ tdata.LAST_CHANGE_TIME | date:'yyyy-MM-dd HH:mm:ss' }}</td>
               </tr>
               </tbody>
             </table>
@@ -47,6 +47,34 @@
     </div>
   </div>
 
+</div>
 
-
+<!-- Small modal -->
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" aria-label="Close" (click)="smModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Create event</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="I_FUNCNAME">FUNCNAME</label>
+            <input type="text" class="form-control form-control-rounded" #I_FUNCNAME name="I_FUNCNAME" id="I_FUNCNAME" placeholder="FUNCNAME">
+          </div>
+          <div class="form-group">
+            <label for="I_EVENT_DES">EVENT_DES</label>
+            <input type="text" class="form-control" #I_EVENT_DES name="I_EVENT_DES" id="I_EVENT_DES" placeholder="EVENT_DES">
+            <span class="help-block sub-little-text">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary confirm-btn" (click)="create(smModal, I_FUNCNAME.value, I_EVENT_DES.value)">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

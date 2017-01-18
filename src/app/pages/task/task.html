@@ -1,9 +1,72 @@
 <div class="widgets">
 
+  
   <div class="row">
-    <ba-card title="Basic Example" baCardClass="with-scroll">
-      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
-    </ba-card>
+    <div class="col-md-12">
+      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th>id</th>
+                <th>run_id</th>
+                <th>task_status</th>
+                <th>event_type</th>
+                <th>user_id</th>
+                <th>trigger_time</th>
+                <th>task_priority</th>
+                <th>CATEGORY</th>
+                <th>TAB_FUNC_NAME</th>
+                <th>TAB_COUNT</th>
+                <th>IN_SCOPE</th>
+                <th>message_key</th>
+                <th>MESSAGE</th>
+                <th>start_time</th>
+                <th>end_time</th>
+                <th>execution_time</th>
+                <th>input_paras</th>
+                <th>output_paras</th>
+                <th>JSON_CONTENT</th>
+                <th>POST_CONTENT</th>
+                <th>user_exit</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas ">
+                 <td><a routerLink="/pages/tasklog/{{ tdata.id }}" routerLinkActive="active">{{ tdata.id }}</a></td>
+                 <td>{{ tdata.run_id }}</td>
+                 <td>{{ tdata.task_status }}</td>
+                 <td>{{ tdata.event_type }}</td>
+                 <td>{{ tdata.user_id }}</td>
+                 <td>{{ tdata.trigger_time }}</td>
+                 <td>{{ tdata.task_priority }}</td>
+                 <td>{{ tdata.CATEGORY }}</td>
+                 <td>{{ tdata.TAB_FUNC_NAME }}</td>
+                 <td>{{ tdata.TAB_COUNT }}</td>
+                 <td>{{ tdata.IN_SCOPE }}</td>
+                 <td>{{ tdata.message_key }}</td>
+                 <td>{{ tdata.MESSAGE }}</td>
+                 <td>{{ tdata.start_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                 <td>{{ tdata.end_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                 <td>{{ tdata.execution_time }}</td>
+                 <td>{{ tdata.input_paras }}</td>
+                 <td>{{ tdata.output_paras }}</td>
+                 <td>{{ tdata.JSON_CONTENT }}</td>
+                 <td>{{ tdata.POST_CONTENT }}</td>
+                 <td></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+       </ory-card>
+    </div>
   </div>
 
+
+  <div class="row">
+    <div class="col-md-12">
+       
+    </div>
+  </div>
+ 
 </div>

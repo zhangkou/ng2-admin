@@ -3,10 +3,10 @@ import { HttpModule , Http, ConnectionBackend, Headers, RequestOptions } from '@
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'sapfield',
-  template: require('./sapfield.html')
+  selector: 'tasklog',
+  template: require('./tasklog.html')
 })
-export class SapfieldComponent {
+export class TasklogComponent {
 
   tableDatas:Array<any>;
 
@@ -32,7 +32,7 @@ export class SapfieldComponent {
   ngOnInit() {
     this.route.params
     .subscribe((params: Params) => {
-        this.getData("uma/system/sapFields/" + params['id'])
+        this.getData("uma/system/tasks/" + params['id'] + "/logs")
         .then(data => {
          this.tableDatas = data["page"].results ;
         })
@@ -40,10 +40,6 @@ export class SapfieldComponent {
           console.log(error) ;
         });
     });
- }
-
-xx(value){
-     console.log(value) ;
  }
 
   getData(sourceUrl) {

@@ -5,8 +5,7 @@ import { routing } from './task.routing';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
-import {BrowserModule} from '@angular/platform-browser';
-import { Ng2PaginationModule } from 'ng2-pagination';
+import { CustomServerDataSource } from './task.service';
 
 @NgModule({
   imports: [
@@ -15,12 +14,11 @@ import { Ng2PaginationModule } from 'ng2-pagination';
     FormsModule,
     ReactiveFormsModule,
     NgaModule,
-    BrowserModule,
-    Ng2PaginationModule,
     routing
   ],
   declarations: [
     TaskComponent
-  ]
+  ], 
+  providers: [CustomServerDataSource]
 })
 export default class TaskModule {}

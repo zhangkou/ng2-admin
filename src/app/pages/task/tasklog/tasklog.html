@@ -1,0 +1,36 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+       <ba-card baCardClass="with-scroll table-panel">
+
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th>task_id</th>
+                <th>run_id</th>
+                <th>log_type</th>
+                <th>log_time</th>
+                <th>id</th>
+                <th>log_desc</th>
+                
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas">
+                <td>{{ tdata.task_id }}</td>
+                <td>{{ tdata.run_id }}</td>
+                <td>{{ tdata.log_type }}</td>
+                <td>{{ tdata.log_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                <td>{{ tdata.id }}</td>
+                <td>{{ tdata.log_desc }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+       </ba-card>
+    </div>
+  </div>
+</div>

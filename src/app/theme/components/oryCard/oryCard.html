@@ -1,7 +1,7 @@
 <div baCardBlur class="animated fadeIn card {{cardType}} {{baCardClass || ''}}" zoom-in>
     <div  class="card-header">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <input type="text" class="form-control form-control-sm ng-untouched ng-pristine ng-valid"
                         id="search" 
                         name="search" 
@@ -9,11 +9,11 @@
                         #searchField 
                         (keyup)="search.emit(searchField)">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div style="float: right">
-                    <button type="button" class="btn btn-default" (click)="create.emit($event)">Create</button>
-                    <button type="button" class="btn btn-default" (click)="update.emit($event)">Update</button>
-                    <button type="button" class="btn btn-default" (click)="refresh.emit(searchField)">Refresh</button>
+                    <button type="button" class="btn btn-info btn-md" (click)="create.emit($event)">Create</button>
+                    <button type="button" class="btn btn-info" (click)="update.emit($event)">Update</button>
+                    <button type="button" class="btn btn-info" (click)="refresh.emit(searchField)">Refresh</button>
                 </div>
             </div>
         </div>
