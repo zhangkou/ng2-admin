@@ -341,6 +341,20 @@ export const PAGES_MENU = [
       },
 
       {
+        path: 'user',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'User Page', // menu title
+            icon: 'ion-android-home', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+
+      {
         path: 'task',  // path for our page
         data: { // custom menu declaration
           menu: {

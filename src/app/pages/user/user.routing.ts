@@ -1,10 +1,10 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { NewComponent } from './new.component';
+import { UserComponent } from './user.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewComponent
+    component: UserComponent
   }
 ];
 

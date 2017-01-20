@@ -1,30 +1,75 @@
-import {Component} from '@angular/core';
-import { HttpModule , Http, ConnectionBackend, Headers, RequestOptions } from '@angular/http';
+import { Component } from '@angular/core';
+import { ViewEncapsulation} from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Component({
-  selector: 'new',
-  template: `<strong (click) = "xx()">My page content here</strong>`
+  selector: 'user',
+  template: require('./user.html')
 })
 export class UserComponent {
-  constructor(protected http: Http) {
+    pageIndex   = 1 ;
+    pageSize    = 100 ;
+    totalPage   = 0 ;
+    totalCount  = 0 ;
+
+    tableDatas:Array<any>;
     
-  }
+    stringFilter = {
+        
+    };
 
-  xx() {
-    console.log(this.http) ;
-    let url = "http://api.oryzasoft.com/rs/v1/uma/sap/purchaseOrdersAll?keywords=&pageIndex=1&pageSize=30" ;
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.append('token', "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ3ODU5NTM5NTkxMywiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.g-SFnB0JwWPE3tVsamQW4acP2lR4TxY7wNpgdVO4pnQ");
-    headers.append('appKey', '{"PO_REL_CODE/PO_REL_GROUP":"01/PH","PO_REL_CODE":"01","PO_REL_GROUP":"PH","appId":"fda5d625-0b0b-4551-b2e8-d0596274f8a4"}');
+    constructor(protected http: Http) {
+        this.getData("uma/system/users", true, this.pageIndex, this.pageSize) ;
+    }
 
-    let xxx =  this.http.get(url, new RequestOptions({
-          headers:headers
-        })).map(res => {
-      return res.json();
-    });
+    onPageChange(number: number) {
+        this.pageIndex = number ;
+        this.getData("uma/system/users", true, this.pageIndex, this.pageSize) ;
+    }
 
-    console.log(xxx) ;
+    refresh(target){
+        target.value = "" ;
+        this.stringFilter = {
+        
+        };
+    }
 
-    xxx.subscribe() ;
-  }
+    search(target){
+        let searchValue = target.value ;
+        this.stringFilter = {
+            "name": searchValue
+        };
+    }
+
+    getData(sourceUrl, paging, currentPage, itemsPerPage) {
+            let url = "http://api.oryzasoft.com/rs/v1/"  + sourceUrl;
+            if(paging){
+                url = url + "?" + "pageIndex=" + currentPage + "&pageSize=" + itemsPerPage ;
+            }
+            let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4MzA3NzgyNzMwOSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.njGVKuz2xB3umfI5MBGHOHYGdgLxb51WbyfEBS9DLgU";
+            let headers = new Headers({ 'Content-Type': 'application/json' });
+            headers.append('token', token) ;
+
+            let requestPromise =  new Promise((resolve, reject) => {
+                this.http.get(url, { headers: headers })
+                    .map(res => res.json())
+                    .subscribe(data => {
+                        if (data.message_rest.type == 'S') {
+                            resolve(data);
+                        }else{
+                            reject(data);
+                        }  
+                    });
+            });
+
+            requestPromise.then(data => {
+                this.pageIndex      =  data["page"].pageIndex ;
+                this.pageSize       =  data["page"].pageSize ;
+                this.totalPage      =  data["page"].totalPage ;
+                this.totalCount     =  data["page"].totalCount ;   
+                this.tableDatas     =  data["page"].results ;
+            }).catch(error => {
+                console.log(error) ;
+            });
+    }
 }

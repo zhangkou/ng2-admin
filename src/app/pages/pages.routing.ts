@@ -24,6 +24,7 @@ const routes: Routes = [
       { path: 'tables', loadChildren: () => System.import('./tables/tables.module') },
       { path: 'maps', loadChildren: () => System.import('./maps/maps.module') },
       { path: 'new',  loadChildren: () => System.import('./new/new.module') },
+      { path: 'user',  loadChildren: () => System.import('./user/user.module') },
       { path: 'task',  loadChildren: () => System.import('./task/task.module') },
       { path: 'tasklog/:id',  loadChildren: () => System.import('./task/tasklog/tasklog.module') },
       { path: 'event',  loadChildren: () => System.import('./event/event.module') },

@@ -32,7 +32,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of tableDatas ">
+              <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageIndex, totalItems: totalCount }">
                  <td><a routerLink="/pages/tasklog/{{ tdata.id }}" routerLinkActive="active">{{ tdata.id }}</a></td>
                  <td>{{ tdata.run_id }}</td>
                  <td>{{ tdata.task_status }}</td>
@@ -53,7 +53,7 @@
                  <td>{{ tdata.output_paras }}</td>
                  <td>{{ tdata.JSON_CONTENT }}</td>
                  <td>{{ tdata.POST_CONTENT }}</td>
-                 <td></td>
+                 <td> </td>
               </tr>
               </tbody>
             </table>
@@ -65,7 +65,9 @@
 
   <div class="row">
     <div class="col-md-12">
-       
+      <div style="text-align: center;">
+        <pagination-controls maxSize="15" (pageChange)="onPageChange($event)" id="server"></pagination-controls>
+      </div>
     </div>
   </div>
  
