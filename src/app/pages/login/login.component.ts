@@ -2,6 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Http, Headers } from '@angular/http';
+import { AppState } from '../../app.service';
 
 @Component({
   selector: 'login',
@@ -17,7 +18,7 @@ export class Login {
   public submitted:boolean = false;
   public token: String ;
 
-  constructor(fb:FormBuilder, protected router: Router, protected http: Http) {
+  constructor(fb:FormBuilder, protected router: Router, protected http: Http, protected appState: AppState) {
     this.form = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -37,6 +38,7 @@ export class Login {
       this.authenticate(email_str, pass_str)
         .then(data => {
           this.router.navigate(["pages"]) ;
+          console.log(this.appState.get("token")) ;
         })
         .catch(error => {
           console.log(error) ;
@@ -55,7 +57,7 @@ export class Login {
                 .subscribe(data => {
                     if (data.message_rest.type == 'S') {
                         this.token = data.page.results[0].token ;
-                        console.log(this.token) ;
+                        this.appState.set("token", this.token) ;
                         resolve(true);
                     }
                     else
