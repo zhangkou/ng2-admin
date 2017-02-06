@@ -13,7 +13,6 @@ export class RfcparamComponent extends BaseComponent {
 
     constructor(protected http: Http, protected appState: AppState, protected route: ActivatedRoute, protected router: Router) {
         super(http, appState, route, router) ;
-        this.init() ;
     }
 
     init(){
