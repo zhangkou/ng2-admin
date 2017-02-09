@@ -110,8 +110,8 @@ export class BaseComponent {
         if(paging){
             url = url + "?" + "pageIndex=" + currentPage + "&pageSize=" + itemsPerPage ;
         }
-        //let token = this.appState.get("token") ;
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4NTE1NDUxODM1OSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.O_fp9bNo0JL48Hx4isSV8mLykY3eaPMrltYN7d_tunY" ;
+        let token = this.appState.get("token") ;
+        //let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4NTE1NDUxODM1OSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.O_fp9bNo0JL48Hx4isSV8mLykY3eaPMrltYN7d_tunY" ;
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('token', token) ;
 
