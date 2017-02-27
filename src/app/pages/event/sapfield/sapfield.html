@@ -1,7 +1,7 @@
 <div class="widgets">
   <div class="row">
     <div class="col-md-12">
-      <ba-card title="SAP Field" baCardClass="with-scroll table-panel">
+      <ory-card title="SAP Field" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
 
           <div class="horizontal-scroll">
             <table class="table table-condensed">
@@ -101,14 +101,14 @@
                 <td>{{ tdata.DOMNAME }}</td>
                 <td>{{ tdata.CHECKTABLE }}</td>
                 <td>{{ tdata.LENG }}</td>
-                <td>{{ tdata.DM_LAST_CHANGE_TIME }}</td>
+                <td>{{ tdata.DM_LAST_CHANGE_TIME | date:'yyyy-MM-dd HH:mm:ss' }}</td>
               </tr>
               </tbody>
             </table>
           </div>
 
 
-       </ba-card>
+       </ory-card>
     </div>
   </div>
 </div>

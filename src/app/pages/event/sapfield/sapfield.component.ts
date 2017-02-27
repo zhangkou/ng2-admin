@@ -16,8 +16,29 @@ export class SapfieldComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL = "uma/system/sapFields/{{id}}" ;
+        this.listURL    = "uma/system/sapFields/{{id}}" ;
+        this.updateURL  = "uma/system/sapFields/" ;
+        this.update_key = "id" ;
+        this.filter_key = "FIELDNAME" ;
         this.paging     = false ;
         this.subPage    = true ;
+    }
+
+    updateHook(){
+        let refresh_metadata_1  =  "sap/metadata/refresh/1" ;
+        let refresh_metadata_E  =  "sap/metadata/refresh/E" ;
+        let sycnData2Agent      =  "uma/sap/events?taskAction=SycnS2C" ;
+        let sycnData2Agent_body =  {
+            "table_name": "e0000_dd03l_dm",
+            "filter": " TABNAME='" + this.params[this.param_key] + "' ",
+            "first_load": "",
+            "jpush_str1": "jpush_str_valueZ01",
+            "jpush_str2": "jpush_str_valueZ02",
+            "jpush_str3": "jpush_str_valueZ03",
+            "jpush_str4": "jpush_str_valueZ04"
+        }  ;
+        this.postData(sycnData2Agent, sycnData2Agent_body) ;
+        this.getData(refresh_metadata_1) ;
+        this.getData(refresh_metadata_E) ;
     }
 }

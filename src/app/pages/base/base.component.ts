@@ -33,7 +33,7 @@ export class BaseComponent {
     constructor(protected http: Http, protected appState: AppState, protected route?: ActivatedRoute, protected router?: Router) {
         this.init() ;
         if(!this.subPage){
-          this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
+          this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
         }
     }
 
@@ -42,7 +42,7 @@ export class BaseComponent {
           this.route.params.subscribe((params: Params) => {
             this.params = params ;
             this.listURL = this.listURL.replace("{{id}}", params[this.param_key]) ;
-            this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
+            this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
           });
         }
     }
@@ -53,13 +53,13 @@ export class BaseComponent {
 
     onPageChange(number: number) {
         this.pageIndex = number ;
-        this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
+        this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
     }
 
     refresh(target){
         target.value = "" ;
         this.stringFilter = {};
-        this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
+        this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
     }
 
     search(target){
@@ -86,6 +86,19 @@ export class BaseComponent {
         target.hide() ;
     }
 
+    list(sourceUrl, paging?, currentPage?, itemsPerPage?) {
+        let getPromise = this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize)
+        getPromise.then(data => {
+            this.pageIndex      =  data["page"].pageIndex ;
+            this.pageSize       =  data["page"].pageSize ;
+            this.totalPage      =  data["page"].totalPage ;
+            this.totalCount     =  data["page"].totalCount ;   
+            this.tableDatas     =  data["page"].results ;
+        }).catch(error => {
+            console.log(error) ;
+        });
+    }
+
     update(event){
         if(this.tableDatas){
             let allPutPromise = [] ;
@@ -96,13 +109,18 @@ export class BaseComponent {
             }) ;
             if(allPutPromise && allPutPromise.length > 0){
                   Promise.all(allPutPromise)
-                    .then(values => { 
-                            this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
+                    .then(values => {
+                            this.updateHook() ;
+                            this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
                           }, reason => {
                             console.log(reason)
                           });
             }
         }
+    }
+
+    updateHook(){
+
     }
 
     getData(sourceUrl, paging?, currentPage?, itemsPerPage?) {
@@ -115,8 +133,9 @@ export class BaseComponent {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         headers.append('token', token) ;
 
-        let requestPromise =  new Promise((resolve, reject) => {
-            this.http.get(url, { headers: headers })
+        let getPromise =  new Promise((resolve, reject) => {
+            this.http
+                .get(url, { headers: headers })
                 .map(res => res.json())
                 .subscribe(data => {
                     if (data.message_rest.type == 'S') {
@@ -127,15 +146,7 @@ export class BaseComponent {
                 });
         });
 
-        requestPromise.then(data => {
-            this.pageIndex      =  data["page"].pageIndex ;
-            this.pageSize       =  data["page"].pageSize ;
-            this.totalPage      =  data["page"].totalPage ;
-            this.totalCount     =  data["page"].totalCount ;   
-            this.tableDatas     =  data["page"].results ;
-        }).catch(error => {
-            console.log(error) ;
-        });
+        return getPromise ;
     }
 
 
@@ -147,7 +158,8 @@ export class BaseComponent {
         headers.append('token', token) ;
 
         let putPromise = new Promise((resolve, reject) => {
-            this.http.put(url, data, { headers: headers })
+            this.http
+                .put(url, data, { headers: headers })
                 .map(res => res.json())
                 .subscribe(data => {
                     if (data.message_rest.type == 'S') {
@@ -159,5 +171,28 @@ export class BaseComponent {
         });
 
         return putPromise ;
+    }
+
+    postData(sourceUrl, data){
+        let url = this.baseURL  + sourceUrl;
+        //let token = this.appState.get("token") ;
+        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4NTE1NDUxODM1OSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.O_fp9bNo0JL48Hx4isSV8mLykY3eaPMrltYN7d_tunY" ;
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        headers.append('token', token) ;
+
+        let postPromise = new Promise((resolve, reject) => {
+            this.http
+                .post(url, data, { headers: headers })
+                .map(res => res.json())
+                .subscribe(data => {
+                    if (data.message_rest.type == 'S') {
+                        resolve(data);
+                    }else{
+                        reject(data);
+                    }  
+                });
+        });
+
+        return postPromise ;
     }
 }

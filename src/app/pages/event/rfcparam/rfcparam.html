@@ -1,8 +1,7 @@
 <div class="widgets">
   <div class="row">
     <div class="col-md-12">
-      <ba-card title="Rfc Paremeter" baCardClass="with-scroll table-panel">
-
+      <ory-card title="Rfc Paremeter" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
 
         <div class="horizontal-scroll">
           <table class="table table-condensed">
@@ -45,15 +44,15 @@
               <td>{{ tdata.Owner }}</td>
               <td>{{ tdata.CreatedBy }}</td>
               <td>{{ tdata.ModifiedBy }}</td>
-              <td>{{ tdata.CreatedAt }}</td>
-              <td>{{ tdata.ModifiedAt }}</td>
+              <td>{{ tdata.CreatedAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+              <td>{{ tdata.ModifiedAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
             </tr>
             </tbody>
           </table>
         </div>
 
 
-      </ba-card>
+      </ory-card>
     </div>
   </div>
 </div>

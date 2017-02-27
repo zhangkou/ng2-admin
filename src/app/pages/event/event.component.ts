@@ -18,6 +18,7 @@ export class EventComponent extends BaseComponent {
     init(){
         this.listURL    = "uma/system/events" ;
         this.updateURL  = "uma/system/events/" ;
+        this.update_key = "EVENT_NUMBER" ;
         this.filter_key = "FUNCNAME" ;
     }
 }
