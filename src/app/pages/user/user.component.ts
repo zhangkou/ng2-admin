@@ -3,6 +3,7 @@ import { ViewEncapsulation} from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { BaseComponent } from '../base/base.component';
 import { AppState } from '../../app.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'user',
@@ -11,8 +12,8 @@ import { AppState } from '../../app.service';
 
 export class UserComponent extends BaseComponent {
 
-    constructor(protected http: Http, protected appState: AppState) {
-        super(http, appState) ;
+    constructor(protected http: Http, protected appState: AppState, protected route: ActivatedRoute, protected router: Router) {
+        super(http, appState, route, router) ;
     }
 
     init(){

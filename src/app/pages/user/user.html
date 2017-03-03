@@ -8,27 +8,20 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th>pic</th>
-                <th>user_id</th>
-                <th>owner</th>
-                <th>name</th>
-                <th>email</th>
-                <th>user_status</th>
-                <th>login_status</th>
-                <th>login_time</th>
-                <th>sap_user</th>
-                <th>sap_language</th>
-                <th>sap_user_status</th>
-                <th>sap_task_id</th>
-                <th>sap_task_run_id</th>
-                <th>sap_user_validated_time</th>
-                <th>device_id</th>
-                <th>device_name</th>
-                <th>device_os</th>
-                <th>created_by</th>
-                <th>created_at</th>
-                <th>modified_by</th>
-                <th>modified_at</th>
+                <th></th>
+                <th>USER</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>STATUS</th>
+                <th>LS</th>
+                <th>LT</th>
+                <th>SAP_USER</th>
+                <th>LANG</th>
+                <th>SAP_S</th>
+                <th>CREATED_BY</th>
+                <th>CREATED_AT</th>
+                <th>MODIFIED_BY</th>
+                <th>MODIFIED_AT</th>
               </tr>
               </thead>
               <tbody>
@@ -38,7 +31,6 @@
                    <div class="kameleon-icon" *ngIf="tdata.picURL != null"><img src="{{ tdata.picURL }}"  width="40" height="40"></div>       
                  </td>
                  <td>{{ tdata.user_id }}</td>
-                 <td>{{ tdata.owner }}</td>
                  <td>{{ tdata.name }}</td>
                  <td>{{ tdata.email }}</td>
                  <td>{{ tdata.user_status }}</td>
@@ -47,12 +39,6 @@
                  <td>{{ tdata.sap_user }}</td>
                  <td>{{ tdata.sap_language }}</td>
                  <td>{{ tdata.sap_user_status }}</td>
-                 <td>{{ tdata.sap_task_id }}</td>
-                 <td>{{ tdata.sap_task_run_id }}</td>
-                 <td>{{ tdata.sap_user_validated_time | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                 <td>{{ tdata.device_id  }}</td>
-                 <td>{{ tdata.device_name }}</td>
-                 <td>{{ tdata.device_os }}</td>
                  <td>{{ tdata.created_by }}</td>
                  <td>{{ tdata.created_at | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                  <td>{{ tdata.modified_by }}</td>

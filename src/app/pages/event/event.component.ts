@@ -3,6 +3,7 @@ import { HttpModule , Http, ConnectionBackend, Headers, RequestOptions } from '@
 import { MdSnackBar} from '@angular/material';
 import { BaseComponent } from '../base/base.component';
 import { AppState } from '../../app.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'event',
@@ -11,8 +12,8 @@ import { AppState } from '../../app.service';
 
 export class EventComponent extends BaseComponent {
 
-    constructor(protected http: Http, protected appState: AppState) {
-        super(http, appState) ;
+    constructor(protected http: Http, protected appState: AppState, protected route: ActivatedRoute, protected router: Router) {
+        super(http, appState, route, router) ;
     }
 
     init(){

@@ -8,27 +8,26 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th>id</th>
-                <th>run_id</th>
-                <th>task_status</th>
-                <th>event_type</th>
-                <th>user_id</th>
-                <th>trigger_time</th>
-                <th>task_priority</th>
-                <th>CATEGORY</th>
+                <th>ID</th>
+                <th>RUN</th>
+                <th>TS</th>
+                <th>EVENT</th>
+                <th>USER</th>
+                <th>TRIGGER</th>
+                <th>PR</th>
+                <th>C</th>
                 <th>TAB_FUNC_NAME</th>
-                <th>TAB_COUNT</th>
-                <th>IN_SCOPE</th>
-                <th>message_key</th>
+                <th>TC</th>
                 <th>MESSAGE</th>
-                <th>start_time</th>
-                <th>end_time</th>
-                <th>execution_time</th>
-                <th>input_paras</th>
-                <th>output_paras</th>
+                <th>S_TIME</th>
+                <th>E_TIME</th>
+                <th>EXE</th>
+                <th>INPUT_PARAS</th>
+                <th>OUTPUT_PARAS</th>
                 <th>JSON_CONTENT</th>
                 <th>POST_CONTENT</th>
-                <th>user_exit</th>
+                <th>USER_EXIT</th>
+                <th>MESSAGE_KEY</th>
               </tr>
               </thead>
               <tbody>
@@ -43,8 +42,6 @@
                  <td>{{ tdata.CATEGORY }}</td>
                  <td>{{ tdata.TAB_FUNC_NAME }}</td>
                  <td>{{ tdata.TAB_COUNT }}</td>
-                 <td>{{ tdata.IN_SCOPE }}</td>
-                 <td>{{ tdata.message_key }}</td>
                  <td>{{ tdata.MESSAGE }}</td>
                  <td>{{ tdata.start_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                  <td>{{ tdata.end_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
@@ -54,6 +51,7 @@
                  <td>{{ tdata.JSON_CONTENT }}</td>
                  <td>{{ tdata.POST_CONTENT }}</td>
                  <td> </td>
+                 <td>{{ tdata.message_key }}</td>
               </tr>
               </tbody>
             </table>

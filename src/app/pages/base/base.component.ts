@@ -120,7 +120,7 @@ export class BaseComponent {
     }
 
     updateHook(){
-
+        //subclass
     }
 
     getData(sourceUrl, paging?, currentPage?, itemsPerPage?) {
@@ -141,6 +141,7 @@ export class BaseComponent {
                     if (data.message_rest.type == 'S') {
                         resolve(data);
                     }else{
+                        this.handleError(data) ;
                         reject(data);
                     }  
                 });
@@ -165,6 +166,7 @@ export class BaseComponent {
                     if (data.message_rest.type == 'S') {
                         resolve(data);
                     }else{
+                        this.handleError(data) ;
                         reject(data);
                     }  
                 });
@@ -188,11 +190,17 @@ export class BaseComponent {
                     if (data.message_rest.type == 'S') {
                         resolve(data);
                     }else{
+                        this.handleError(data) ;
                         reject(data);
                     }  
                 });
         });
 
         return postPromise ;
+    }
+
+    handleError(error){
+        //redirect to login page
+        this.router.navigate([""]) ;
     }
 }

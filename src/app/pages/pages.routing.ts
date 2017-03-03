@@ -1,5 +1,7 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { Pages } from './pages.component';
+import { AuthGuard }      from './auth-guard.service';
+
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
@@ -13,6 +15,8 @@ const routes: Routes = [
   {
     path: 'pages',
     component: Pages,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: () => System.import('./dashboard/dashboard.module') },

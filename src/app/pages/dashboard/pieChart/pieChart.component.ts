@@ -2,6 +2,12 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
 import {PieChartService} from './pieChart.service';
 
+import { BaseComponent } from '../../base/base.component';
+
+import { HttpModule , Http, ConnectionBackend, Headers, RequestOptions } from '@angular/http';
+
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 import './pieChart.loader.ts';
 
 @Component({
@@ -17,13 +23,14 @@ export class PieChart {
   private _init = false;
 
   constructor(private _pieChartService: PieChartService) {
+    //super(null,null) ;
     this.charts = this._pieChartService.getData();
   }
 
   ngAfterViewInit() {
     if (!this._init) {
-      this._loadPieCharts();
-      this._updatePieCharts();
+      //this._loadPieCharts();
+      //this._updatePieCharts();
       this._init = true;
     }
   }
@@ -52,7 +59,7 @@ export class PieChart {
     let getRandomArbitrary = (min, max) => { return Math.random() * (max - min) + min; };
 
     jQuery('.pie-charts .chart').each(function(index, chart) {
-      jQuery(chart).data('easyPieChart').update(getRandomArbitrary(55, 90));
+      jQuery(chart).data('easyPieChart').update(45);
     });
   }
 }
