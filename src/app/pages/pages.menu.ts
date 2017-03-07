@@ -73,6 +73,34 @@ export const PAGES_MENU = [
           }
         }
       },
+
+      {
+        path: 'parameter',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Parameter', // menu title
+            icon: 'ion-settings', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 400
+          }
+        }
+      },
+
+      {
+        path: 'manage',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Datasycn', // menu title
+            icon: 'ion-settings', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 500
+          }
+        }
+      }
       
     ]
   }

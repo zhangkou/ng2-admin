@@ -40,11 +40,16 @@
                  <td>{{ tdata.trigger_time }}</td>
                  <td>{{ tdata.task_priority }}</td>
                  <td>{{ tdata.CATEGORY }}</td>
-                 <td>{{ tdata.TAB_FUNC_NAME }}</td>
+                 <td *ngIf="tdata.event_type == 'E0015'">
+                   <a routerLink="/pages/sapfield/{{ tdata.TAB_FUNC_NAME }}" routerLinkActive="active">{{ tdata.TAB_FUNC_NAME }}</a>
+                 </td>
+                 <td *ng-else>
+                   {{ tdata.TAB_FUNC_NAME }}
+                 </td>
                  <td>{{ tdata.TAB_COUNT }}</td>
                  <td>{{ tdata.MESSAGE }}</td>
-                 <td>{{ tdata.start_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                 <td>{{ tdata.end_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                 <td  style="white-space: nowrap;">{{ tdata.start_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                 <td  style="white-space: nowrap;">{{ tdata.end_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
                  <td>{{ tdata.execution_time }}</td>
                  <td>{{ tdata.input_paras }}</td>
                  <td>{{ tdata.output_paras }}</td>

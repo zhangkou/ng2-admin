@@ -8,6 +8,7 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
+                <th class="table-id">#</th>
                 <th></th>
                 <th>USER</th>
                 <th>NAME</th>
@@ -26,9 +27,12 @@
               </thead>
               <tbody>
               <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageIndex, totalItems: totalCount }">
+                 <td class="table-id">
+                    <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
                  <td>
-                   <div class="kameleon-icon" *ngIf="tdata.picURL == null"><img src="assets/img/theme/icon/kameleon/Student-3.svg"  width="40" height="40"></div>
-                   <div class="kameleon-icon" *ngIf="tdata.picURL != null"><img src="{{ tdata.picURL }}"  width="40" height="40"></div>       
+                    <div class="kameleon-icon" *ngIf="tdata.picURL == null"><img src="assets/img/theme/icon/kameleon/Student-3.svg"  width="40" height="40"></div>
+                    <div class="kameleon-icon" *ngIf="tdata.picURL != null"><img src="{{ tdata.picURL }}"  width="40" height="40"></div>       
                  </td>
                  <td>{{ tdata.user_id }}</td>
                  <td>{{ tdata.name }}</td>

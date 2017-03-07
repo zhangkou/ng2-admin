@@ -7,20 +7,25 @@ import { RESTApi } from '../../restApi.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'event',
-  template: require('./event.html')
+  selector: 'parameter',
+  template: require('./parameter.html')
 })
 
-export class EventComponent extends BaseComponent {
+export class ParameterComponent extends BaseComponent {
 
     constructor(protected restApi: RESTApi, protected route: ActivatedRoute) {
         super(restApi, route) ;
     }
 
     init(){
-        this.listURL    = "uma/system/events" ;
-        this.updateURL  = "uma/system/events/" ;
-        this.update_key = "EVENT_NUMBER" ;
-        this.filter_key = "FUNCNAME" ;
+        this.listURL    = "uma/system/dmParameters" ;
+        this.updateURL  = "uma/system/dmParameters/" ;
+        this.update_key = "id" ;
+        this.pageSize   = 100 ;
+    }
+
+    updateHook(){
+        let sycn2agent  =  "uma/system/tasks/3821/start " ;
+        this.restApi.getData(sycn2agent) ;
     }
 }

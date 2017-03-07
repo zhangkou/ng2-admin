@@ -14,6 +14,7 @@ import { routing } from './app.routing';
 // App is our top level component
 import { App } from './app.component';
 import { AppState, InternalStateType } from './app.service';
+import { RESTApi } from './restApi.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
@@ -21,7 +22,8 @@ import { PagesModule } from './pages/pages.module';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  RESTApi
 ];
 
 type StoreType = {

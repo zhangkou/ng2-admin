@@ -6,19 +6,18 @@ import { RESTApi } from '../../../restApi.service';
 import { BaseComponent } from '../../base/base.component';
 
 @Component({
-  selector: 'tasklog',
-  template: require('./tasklog.html')
+  selector: 'saptable',
+  template: require('./saptable.html')
 })
 
-export class TasklogComponent extends BaseComponent {
+export class SaptableComponent extends BaseComponent {
 
     constructor(protected restApi: RESTApi, protected route: ActivatedRoute) {
         super(restApi, route) ;
     }
 
     init(){
-        this.listURL = "uma/system/tasks/{{p1}}/logs" ;
+        this.listURL    = "uma/system/taskTablesDelta?filter=deltaLoad_SchedueKey='{{p1}}'" ;
         this.paging     = false ;
-        this.subPage    = true ;
     }
 }

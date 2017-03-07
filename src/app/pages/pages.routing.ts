@@ -31,10 +31,14 @@ const routes: Routes = [
       { path: 'user/import',  loadChildren: () => System.import('./user/user.module') },
       { path: 'user/list',  loadChildren: () => System.import('./user/user.module') },
       { path: 'task',  loadChildren: () => System.import('./task/task.module') },
-      { path: 'tasklog/:id',  loadChildren: () => System.import('./task/tasklog/tasklog.module') },
+      { path: 'task/:p1/:p2',  loadChildren: () => System.import('./task/task.module') },
+      { path: 'tasklog/:p1',  loadChildren: () => System.import('./task/tasklog/tasklog.module') },
       { path: 'event',  loadChildren: () => System.import('./event/event.module') },
-      { path: 'rfcparam/:id',  loadChildren: () => System.import('./event/rfcparam/rfcparam.module') },
-      { path: 'sapfield/:id',  loadChildren: () => System.import('./event/sapfield/sapfield.module') }
+      { path: 'rfcparam/:p1',  loadChildren: () => System.import('./event/rfcparam/rfcparam.module') },
+      { path: 'sapfield/:p1',  loadChildren: () => System.import('./event/sapfield/sapfield.module') },
+      { path: 'saptable/:p1',  loadChildren: () => System.import('./event/saptable/saptable.module') },
+      { path: 'parameter',  loadChildren: () => System.import('./parameter/parameter.module') },
+      { path: 'manage',  loadChildren: () => System.import('./manage/manage.module') }
     ]
   }
 ];

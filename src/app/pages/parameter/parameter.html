@@ -1,0 +1,53 @@
+<div class="widgets">
+
+  
+  <div class="row">
+    <div class="col-md-12">
+      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>id</th>
+                <th>eventType</th>
+                <th>paraDesc</th>
+                <th>paraGroup</th>
+                <th>paraName</th>
+                <th>paraDefaultValue</th>
+                <th>paraCurrentValue</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter">
+                <td class="table-id">
+                  <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                </td>
+                <td>{{ tdata.id }}</td>
+                <td>{{ tdata.eventType }}</td>
+                <td>{{ tdata.paraDesc }}</td>
+                <td>{{ tdata.paraGroup }}</td>
+                <td>{{ tdata.paraName }}</td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="paraDefaultValue" id="paraDefaultValue" 
+                          #paraDefaultValue
+                          placeholder="{{ tdata.paraDefaultValue }}" 
+                          [(ngModel)]="tdata.paraDefaultValue"
+                          (change)="inputChanged(paraDefaultValue, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="paraCurrentValue" id="paraCurrentValue" 
+                          #paraCurrentValue
+                          placeholder="{{ tdata.paraCurrentValue }}" 
+                          [(ngModel)]="tdata.paraCurrentValue"
+                          (change)="inputChanged(paraCurrentValue, tdata)">
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+       </ory-card>
+    </div>
+  </div>
+
+</div>

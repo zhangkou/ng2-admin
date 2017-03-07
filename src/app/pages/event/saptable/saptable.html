@@ -1,0 +1,89 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <ory-card title="SAP Field" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
+
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>id</th>
+                <th>category</th>
+                <th>status</th>
+                <th>tabname</th>
+                <th>deltaLoad_id</th>
+                <th>table_count</th>
+                <th>task_status</th>
+                <th>task_status_sch</th>
+                <th>deltaLoad_Job_Status</th>
+                <th>deltaLoad_task_status</th>
+                <th>deltaLoad_category</th>
+                <th>deltaLoad_Job_NextRunTime</th>
+                <th>message</th>
+                <th>end_time</th>
+                <th>end_time_sch</th>
+                <th>deltaLoad_Job_Prev_end_time</th>
+                <th>deltaLoad_table_count</th>
+                <th>start_time_sch</th>
+                <th>start_time_imm</th>
+                <th>execution_time_sch</th>
+                <th>deltaLoad_SchedueKey</th>
+                <th>deltaLoad_Job_Prev_sart_time</th>
+                <th>deltaLoad_PREV_FIRE_TIME</th>
+                <th>end_time_imm</th>
+                <th>execution_time</th>
+                <th>deltaLoad_SchedueFlag</th>
+                <th>deltaLoad_message</th>
+                <th>task_status_imm</th>
+                <th>DDTEXT</th>
+                <th>deltaLoad_trigger_time</th>
+                <th>deltaLoad_trigger_time_para_name</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas">
+                <td class="table-id">
+                  <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                </td>
+                <td>{{ tdata.id }}</td>
+                <td>{{ tdata.category }}</td>
+                <td>{{ tdata.status }}</td>
+                <td>{{ tdata.tabname }}</td>
+                <td>{{ tdata.deltaLoad_id }}</td>
+                <td>{{ tdata.table_count }}</td>
+                <td>{{ tdata.task_status }}</td>
+                <td>{{ tdata.task_status_sch }}</td>
+                <td>{{ tdata.deltaLoad_Job_Status }}</td>
+                <td>{{ tdata.deltaLoad_task_status }}</td>
+                <td>{{ tdata.deltaLoad_category }}</td>
+                <td>{{ tdata.deltaLoad_Job_NextRunTime }}</td>
+                <td>{{ tdata.message }}</td>
+                <td>{{ tdata.end_time }}</td>
+                <td>{{ tdata.end_time_sch }}</td>
+                <td>{{ tdata.deltaLoad_Job_Prev_end_time }}</td>
+                <td>{{ tdata.deltaLoad_table_count }}</td>
+                <td>{{ tdata.start_time_sch }}</td>
+                <td>{{ tdata.start_time_imm }}</td>
+                <td>{{ tdata.execution_time_sch }}</td>
+                <td>{{ tdata.deltaLoad_SchedueKey }}</td>
+                <td>{{ tdata.deltaLoad_Job_Prev_sart_time }}</td>
+                <td>{{ tdata.deltaLoad_PREV_FIRE_TIME }}</td>
+                <td>{{ tdata.end_time_imm }}</td>
+                <td>{{ tdata.execution_time }}</td>
+                <td>{{ tdata.deltaLoad_SchedueFlag }}</td>
+                <td>{{ tdata.deltaLoad_message }}</td>
+                <td>{{ tdata.task_status_imm }}</td>
+                <td>{{ tdata.DDTEXT }}</td>
+                <td>{{ tdata.deltaLoad_trigger_time }}</td>
+                <td>{{ tdata.deltaLoad_trigger_time_para_name }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+       </ory-card>
+    </div>
+  </div>
+</div>

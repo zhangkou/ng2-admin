@@ -1,10 +1,11 @@
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AppState } from '../../app.service';
+import { RESTApi } from '../../restApi.service';
 
 export class BaseComponent {
-    baseURL     = "http://api.oryzasoft.com/rs/v1/" ;
     listURL     = "" ;
+    subListURL  = "" ;
     createURL   = "" ;
     deleteURL   = "" ;
     updateURL   = "" ;
@@ -12,7 +13,7 @@ export class BaseComponent {
     subPage     = false ;
     params      = {} ;
     filter_key  = "" ;
-    param_key   = "id" ;
+    param_key   = ["p1", "p2"] ;
     update_key  = "" ;
     pageIndex   = 1 ;
     pageSize    = 5 ;
@@ -30,21 +31,28 @@ export class BaseComponent {
       { value: null},
     ];
 
-    constructor(protected http: Http, protected appState: AppState, protected route?: ActivatedRoute, protected router?: Router) {
+    constructor(protected restApi: RESTApi, protected route?: ActivatedRoute) {
         this.init() ;
-        if(!this.subPage){
-          this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
-        }
     }
 
     ngOnInit() {
-        if(this.subPage){
-          this.route.params.subscribe((params: Params) => {
+        this.route.params.subscribe((params: Params) => {
             this.params = params ;
-            this.listURL = this.listURL.replace("{{id}}", params[this.param_key]) ;
+            console.log(this.params) ;
+            if(!this.subListURL){
+                this.subListURL = this.listURL ;
+            }
+            this.param_key.forEach((value) => {
+                if(this.params[value]){  
+                    this.subPage = true ;  
+                    this.subListURL = this.subListURL.replace("{{" + value + "}}", this.params[value]) ;
+                }
+            }) ;
+            if(this.subPage){
+                this.listURL = this.subListURL ;
+            }
             this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
-          });
-        }
+        });
     }
 
     init(){
@@ -87,7 +95,7 @@ export class BaseComponent {
     }
 
     list(sourceUrl, paging?, currentPage?, itemsPerPage?) {
-        let getPromise = this.getData(this.listURL, this.paging, this.pageIndex, this.pageSize)
+        let getPromise = this.restApi.getData(this.listURL, this.paging, this.pageIndex, this.pageSize)
         getPromise.then(data => {
             this.pageIndex      =  data["page"].pageIndex ;
             this.pageSize       =  data["page"].pageSize ;
@@ -105,7 +113,7 @@ export class BaseComponent {
             this.tableDatas
                   .filter(value => !!value.saved)
                   .forEach(value => {
-                      allPutPromise.push(this.putData(this.updateURL + value[this.update_key], value));
+                      allPutPromise.push(this.restApi.putData(this.updateURL + (value[this.update_key] ? value[this.update_key] :  "" ), value));
             }) ;
             if(allPutPromise && allPutPromise.length > 0){
                   Promise.all(allPutPromise)
@@ -121,86 +129,5 @@ export class BaseComponent {
 
     updateHook(){
         //subclass
-    }
-
-    getData(sourceUrl, paging?, currentPage?, itemsPerPage?) {
-        let url = this.baseURL  + sourceUrl;
-        if(paging){
-            url = url + "?" + "pageIndex=" + currentPage + "&pageSize=" + itemsPerPage ;
-        }
-        let token = this.appState.get("token") ;
-        //let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4NTE1NDUxODM1OSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.O_fp9bNo0JL48Hx4isSV8mLykY3eaPMrltYN7d_tunY" ;
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        headers.append('token', token) ;
-
-        let getPromise =  new Promise((resolve, reject) => {
-            this.http
-                .get(url, { headers: headers })
-                .map(res => res.json())
-                .subscribe(data => {
-                    if (data.message_rest.type == 'S') {
-                        resolve(data);
-                    }else{
-                        this.handleError(data) ;
-                        reject(data);
-                    }  
-                });
-        });
-
-        return getPromise ;
-    }
-
-
-    putData(sourceUrl, data){
-        let url = this.baseURL  + sourceUrl;
-        //let token = this.appState.get("token") ;
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4NTE1NDUxODM1OSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.O_fp9bNo0JL48Hx4isSV8mLykY3eaPMrltYN7d_tunY" ;
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        headers.append('token', token) ;
-
-        let putPromise = new Promise((resolve, reject) => {
-            this.http
-                .put(url, data, { headers: headers })
-                .map(res => res.json())
-                .subscribe(data => {
-                    if (data.message_rest.type == 'S') {
-                        resolve(data);
-                    }else{
-                        this.handleError(data) ;
-                        reject(data);
-                    }  
-                });
-        });
-
-        return putPromise ;
-    }
-
-    postData(sourceUrl, data){
-        let url = this.baseURL  + sourceUrl;
-        //let token = this.appState.get("token") ;
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsYW5nS2V5IjoiRSIsImpwdXNoSWQiOm51bGwsImNyZWF0ZVRva2VuRGF0ZSI6MTQ4NTE1NDUxODM1OSwiY215R1VJRCI6IjQwMjg4YjgxNDdjZDE2Y2UwMTQ3Y2QyMzZkZjIwMDAwIiwidXNlcklkIjoxMDAyMDUsImVtYWlsIjoidGVzdGVyMDhAb3J5emFzb2Z0LmNvbSJ9.O_fp9bNo0JL48Hx4isSV8mLykY3eaPMrltYN7d_tunY" ;
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        headers.append('token', token) ;
-
-        let postPromise = new Promise((resolve, reject) => {
-            this.http
-                .post(url, data, { headers: headers })
-                .map(res => res.json())
-                .subscribe(data => {
-                    if (data.message_rest.type == 'S') {
-                        resolve(data);
-                    }else{
-                        this.handleError(data) ;
-                        reject(data);
-                    }  
-                });
-        });
-
-        return postPromise ;
-    }
-
-    handleError(error){
-        //redirect to login page
-        this.router.navigate([""]) ;
     }
 }

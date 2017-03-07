@@ -12,25 +12,25 @@ export class PieChartService {
     return [
       {
         color: pieColor,
-        description: 'New Visits',
+        description: '所有用户',
         stats: '57,820',
         icon: 'person',
-        percent: '12'
+        percent: '90'
       }, {
         color: pieColor,
-        description: 'Purchases',
-        stats: '$ 89,745',
+        description: '激活用户',
+        stats: '89,745',
         icon: 'money',
         percent: '60'
       }, {
         color: pieColor,
-        description: 'Active Users',
+        description: '24小时所有任务',
         stats: '178,391',
         icon: 'face',
         percent: '80'
       }, {
         color: pieColor,
-        description: 'Returned',
+        description: '24小时失败任务',
         stats: '32,592',
         icon: 'refresh',
         percent: '99'

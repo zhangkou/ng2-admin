@@ -1,0 +1,110 @@
+<div class="widgets">
+
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+      <ba-card title="SycnToClient" baCardClass="with-scroll table-panel">
+        <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>STATUS</th>
+                <th>COUNT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of sycnToClientDatas">
+                 <td class="table-id">
+                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
+                 <td>{{ tdata.task_status }}</td>
+                 <td><a routerLink="/pages/task/{{ tdata.task_status }}/12" routerLinkActive="active">{{ tdata.count }}</a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+      </ba-card>
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+      <ba-card title="Bacis Tables" baCardClass="with-scroll table-panel">
+        <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>STATUS</th>
+                <th>COUNT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of bacisTablesDatas">
+                 <td class="table-id">
+                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
+                 <td>{{ tdata.task_status }}</td>
+                 <td><a routerLink="/pages/task/{{ tdata.task_status }}/1" routerLinkActive="active">{{ tdata.count }}</a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+      </ba-card>
+    </div>
+  </div>
+
+
+  
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+      <ba-card title="All Tables" baCardClass="with-scroll table-panel">
+        <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>STATUS</th>
+                <th>COUNT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of allTablesDatas">
+                 <td class="table-id">
+                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
+                 <td>{{ tdata.task_status }}</td>
+                 <td><a routerLink="/pages/task/{{ tdata.task_status }}/2,5" routerLinkActive="active">{{ tdata.count }}</a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+      </ba-card>
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+      <ba-card title="TablesDelta" baCardClass="with-scroll table-panel">
+        <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>Status</th>
+                <th>COUNT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tablesDeltaDatas">
+                 <td class="table-id">
+                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
+                 <td>{{ tdata.deltaLoad_SchedueFlag }}</td>
+                 <td><a routerLink="/pages/saptable/{{ tdata.deltaLoad_SchedueKey }}" routerLinkActive="active">{{ tdata.count }}</a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+      </ba-card>
+    </div>
+  </div>
+
+</div>
+

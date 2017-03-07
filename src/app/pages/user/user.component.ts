@@ -3,6 +3,7 @@ import { ViewEncapsulation} from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { BaseComponent } from '../base/base.component';
 import { AppState } from '../../app.service';
+import { RESTApi } from '../../restApi.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -12,8 +13,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 export class UserComponent extends BaseComponent {
 
-    constructor(protected http: Http, protected appState: AppState, protected route: ActivatedRoute, protected router: Router) {
-        super(http, appState, route, router) ;
+    constructor(protected restApi: RESTApi, protected route: ActivatedRoute) {
+        super(restApi, route) ;
     }
 
     init(){
