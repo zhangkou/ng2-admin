@@ -8,16 +8,18 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th></th>
+                <th> </th>
                 <th>FORM_NAME</th>
                 <th>COUNT</th>
+                <th> </th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let tdata of tableDatas">
-                 <td></td>
+                 <td> </td>
                  <td><a routerLink="/pages/formcolumn/{{ tdata.form_name }}" routerLinkActive="active">{{ tdata.form_name }}</a></td>
                  <td>{{ tdata.count }}</td>
+                 <td> </td>
               </tr>
               </tbody>
             </table>
