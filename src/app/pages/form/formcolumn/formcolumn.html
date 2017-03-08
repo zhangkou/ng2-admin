@@ -1,0 +1,145 @@
+<div class="widgets">
+
+  
+  <div class="row">
+    <div class="col-md-12">
+      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th>#</th>
+                <th>id</th>
+                <th>label_id</th>
+                <th>form_name</th>
+                <th>field_name</th>
+                <th>type</th>
+                <th>structure_name</th>
+                <th>required</th>
+                <th>position</th>
+                <th>href</th>
+                <th>href_text_field</th>
+                <th>href_key_field</th>
+                <th>min_value</th>
+                <th>max_value</th>
+                <th>defalut_value</th>
+                <th>LanguageKey</th>
+                <th>width</th>
+                <th>disable</th>
+                <th>hide</th>
+                <th>Text1</th>
+                <th>Text2</th>
+                <th>Text3</th>
+                <th>Text4</th>
+                <th>comments</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas">
+                 <td class="table-id">
+                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
+                 <td>{{ tdata.id }}</td>
+                 <td>{{ tdata.label_id }}</td>
+                 <td>{{ tdata.form_name }}</td>
+                 <td>{{ tdata.field_name }}</td>
+                 <td>{{ tdata.type }}</td>
+                 <td>{{ tdata.structure_name }}</td>
+                 <td>
+                  <input type="text" class="form-control form-control-sm" name="required" id="required" 
+                          #required
+                          placeholder="{{ tdata.required }}" 
+                          [(ngModel)]="tdata.required"
+                          (change)="inputChanged(required, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="position" id="position" 
+                          #position
+                          placeholder="{{ tdata.position }}" 
+                          [(ngModel)]="tdata.position"
+                          (change)="inputChanged(position, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="href" id="href" 
+                          #href
+                          placeholder="{{ tdata.href }}" 
+                          [(ngModel)]="tdata.href"
+                          (change)="inputChanged(href, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="href_text_field" id="href_text_field" 
+                          #href_text_field
+                          placeholder="{{ tdata.href_text_field }}" 
+                          [(ngModel)]="tdata.href_text_field"
+                          (change)="inputChanged(href_text_field, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="href_key_field" id="href_key_field" 
+                          #href_key_field
+                          placeholder="{{ tdata.href_key_field }}" 
+                          [(ngModel)]="tdata.href_key_field"
+                          (change)="inputChanged(href_key_field, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="min_value" id="min_value" 
+                          #min_value
+                          placeholder="{{ tdata.min_value }}" 
+                          [(ngModel)]="tdata.min_value"
+                          (change)="inputChanged(min_value, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="max_value" id="max_value" 
+                          #max_value
+                          placeholder="{{ tdata.max_value }}" 
+                          [(ngModel)]="tdata.max_value"
+                          (change)="inputChanged(max_value, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="defalut_value" id="defalut_value" 
+                          #defalut_value
+                          placeholder="{{ tdata.defalut_value }}" 
+                          [(ngModel)]="tdata.defalut_value"
+                          (change)="inputChanged(defalut_value, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="LanguageKey" id="LanguageKey" 
+                          #LanguageKey
+                          placeholder="{{ tdata.LanguageKey }}" 
+                          [(ngModel)]="tdata.LanguageKey"
+                          (change)="inputChanged(LanguageKey, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="width" id="width" 
+                          #width
+                          placeholder="{{ tdata.width }}" 
+                          [(ngModel)]="tdata.width"
+                          (change)="inputChanged(width, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="disable" id="disable" 
+                          #disable
+                          placeholder="{{ tdata.disable }}" 
+                          [(ngModel)]="tdata.disable"
+                          (change)="inputChanged(disable, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="hide" id="hide" 
+                          #hide
+                          placeholder="{{ tdata.hide }}" 
+                          [(ngModel)]="tdata.hide"
+                          (change)="inputChanged(hide, tdata)">
+                </td>
+                <td>{{ tdata.Text1 }}</td>
+                <td>{{ tdata.Text2 }}</td>
+                <td>{{ tdata.Text3 }}</td>
+                <td>{{ tdata.Text4 }}</td>
+                <td>{{ tdata.comments }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+       </ory-card>
+    </div>
+  </div>
+ 
+</div>

@@ -38,6 +38,8 @@ const routes: Routes = [
       { path: 'sapfield/:p1',  loadChildren: () => System.import('./event/sapfield/sapfield.module') },
       { path: 'saptable/:p1',  loadChildren: () => System.import('./event/saptable/saptable.module') },
       { path: 'parameter',  loadChildren: () => System.import('./parameter/parameter.module') },
+      { path: 'form',  loadChildren: () => System.import('./form/form.module') },
+      { path: 'formcolumn/:p1',  loadChildren: () => System.import('./form/formcolumn/formcolumn.module') },
       { path: 'manage',  loadChildren: () => System.import('./manage/manage.module') }
     ]
   }

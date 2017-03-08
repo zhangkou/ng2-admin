@@ -79,7 +79,7 @@ export const PAGES_MENU = [
         data: { // custom menu declaration
           menu: {
             title: 'Data Sycn', // menu title
-            icon: 'ion-settings', // menu icon
+            icon: 'ion-loop', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
@@ -93,11 +93,25 @@ export const PAGES_MENU = [
         data: { // custom menu declaration
           menu: {
             title: 'Parameter', // menu title
-            icon: 'ion-settings', // menu icon
+            icon: 'ion-levels', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
             order: 500
+          }
+        }
+      },
+
+      {
+        path: 'form',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Form', // menu title
+            icon: 'ion-clipboard', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 600
           }
         }
       }

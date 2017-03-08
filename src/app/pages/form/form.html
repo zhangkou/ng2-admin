@@ -1,0 +1,29 @@
+<div class="widgets">
+
+  
+  <div class="row">
+    <div class="col-md-12">
+      <ory-card title="Event" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th></th>
+                <th>FORM_NAME</th>
+                <th>COUNT</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas">
+                 <td></td>
+                 <td><a routerLink="/pages/formcolumn/{{ tdata.form_name }}" routerLinkActive="active">{{ tdata.form_name }}</a></td>
+                 <td>{{ tdata.count }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+       </ory-card>
+    </div>
+  </div>
+ 
+</div>

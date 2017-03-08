@@ -18,7 +18,7 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th class="table-id">#</th>
+                <th class="table-id"></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -27,7 +27,7 @@
               <tbody>
               <tr *ngFor="let tdata of sycnToClientDatas">
                  <td class="table-id">
-                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                   
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/{{ tdata.task_status }}/12" routerLinkActive="active">{{ tdata.count }}</a></td>
@@ -50,7 +50,7 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th class="table-id">#</th>
+                <th class="table-id"></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -59,7 +59,7 @@
               <tbody>
               <tr *ngFor="let tdata of bacisTablesDatas">
                  <td class="table-id">
-                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                   
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/{{ tdata.task_status }}/1" routerLinkActive="active">{{ tdata.count }}</a></td>
@@ -86,7 +86,7 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th class="table-id">#</th>
+                <th class="table-id"></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -95,7 +95,7 @@
               <tbody>
               <tr *ngFor="let tdata of allTablesDatas">
                  <td class="table-id">
-                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                   
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/{{ tdata.task_status }}/2,5" routerLinkActive="active">{{ tdata.count }}</a></td>
@@ -118,7 +118,7 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
-                <th class="table-id">#</th>
+                <th class="table-id"></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -127,7 +127,7 @@
               <tbody>
               <tr *ngFor="let tdata of tablesDeltaDatas">
                  <td class="table-id">
-                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                   
                  </td>
                  <td>{{ tdata.deltaLoad_SchedueFlag }}</td>
                  <td><a routerLink="/pages/saptable/{{ tdata.deltaLoad_SchedueKey }}" routerLinkActive="active">{{ tdata.count }}</a></td>
