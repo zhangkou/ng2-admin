@@ -1,6 +1,17 @@
 <div class="widgets">
 
   <div class="row">
+    <div class="col-md-2">
+        
+    </div>
+    <div class="col-md-10">
+        <div style="float: right">
+            <button type="button" class="btn btn-info" (click)="refresh($event)">Refresh</button>
+        </div>
+    </div>
+ </div><br>
+
+  <div class="row">
     <div class="col-lg-6 col-md-12">
       <ba-card title="SycnToClient" baCardClass="with-scroll table-panel">
         <div class="horizontal-scroll">
@@ -10,6 +21,7 @@
                 <th class="table-id">#</th>
                 <th>STATUS</th>
                 <th>COUNT</th>
+                <th>ACTION</th>
               </tr>
               </thead>
               <tbody>
@@ -19,6 +31,12 @@
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/{{ tdata.task_status }}/12" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td *ngIf="checkStatus(tdata.task_status)">
+                   <button type="button" class="btn btn-success btn-icon" (click)="startTask(12, tdata.task_status)"><i class="ion-play"></i></button>
+                 </td>
+                 <td *ngIf="!checkStatus(tdata.task_status)">
+                   <button type="button" class="btn btn-danger btn-icon" (click)="stopTask(12, tdata.task_status)"><i class="ion-stop"></i></button>
+                 </td>
               </tr>
               </tbody>
             </table>
@@ -35,6 +53,7 @@
                 <th class="table-id">#</th>
                 <th>STATUS</th>
                 <th>COUNT</th>
+                <th>ACTION</th>
               </tr>
               </thead>
               <tbody>
@@ -44,6 +63,12 @@
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/{{ tdata.task_status }}/1" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td *ngIf="checkStatus(tdata.task_status)">
+                   <button type="button" class="btn btn-success btn-icon" (click)="startTask(1, tdata.task_status)"><i class="ion-play"></i></button>
+                 </td>
+                 <td *ngIf="!checkStatus(tdata.task_status)">
+                   <button type="button" class="btn btn-danger btn-icon" (click)="stopTask(1, tdata.task_status)"><i class="ion-stop"></i></button>
+                 </td>
               </tr>
               </tbody>
             </table>
@@ -64,6 +89,7 @@
                 <th class="table-id">#</th>
                 <th>STATUS</th>
                 <th>COUNT</th>
+                <th>ACTION</th>
               </tr>
               </thead>
               <tbody>
@@ -73,6 +99,12 @@
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/{{ tdata.task_status }}/2,5" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td *ngIf="checkStatus(tdata.task_status)">
+                   <button type="button" class="btn btn-success btn-icon" (click)="startTask('2,5', tdata.task_status)"><i class="ion-play"></i></button>
+                 </td>
+                 <td *ngIf="!checkStatus(tdata.task_status)">
+                   <button type="button" class="btn btn-danger btn-icon" (click)="stopTask('2,5', tdata.task_status)"><i class="ion-stop"></i></button>
+                 </td>
               </tr>
               </tbody>
             </table>
@@ -87,8 +119,9 @@
               <thead>
               <tr class="black-muted-bg">
                 <th class="table-id">#</th>
-                <th>Status</th>
+                <th>STATUS</th>
                 <th>COUNT</th>
+                <th>ACTION</th>
               </tr>
               </thead>
               <tbody>
@@ -98,6 +131,9 @@
                  </td>
                  <td>{{ tdata.deltaLoad_SchedueFlag }}</td>
                  <td><a routerLink="/pages/saptable/{{ tdata.deltaLoad_SchedueKey }}" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td>
+                   <button type="button" class="btn btn-success btn-icon"><i class="ion-play"></i></button>
+                 </td>
               </tr>
               </tbody>
             </table>

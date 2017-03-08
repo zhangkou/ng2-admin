@@ -75,10 +75,10 @@ export const PAGES_MENU = [
       },
 
       {
-        path: 'parameter',  // path for our page
+        path: 'manage',  // path for our page
         data: { // custom menu declaration
           menu: {
-            title: 'Parameter', // menu title
+            title: 'Data Sycn', // menu title
             icon: 'ion-settings', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
@@ -89,10 +89,10 @@ export const PAGES_MENU = [
       },
 
       {
-        path: 'manage',  // path for our page
+        path: 'parameter',  // path for our page
         data: { // custom menu declaration
           menu: {
-            title: 'Datasycn', // menu title
+            title: 'Parameter', // menu title
             icon: 'ion-settings', // menu icon
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
@@ -101,7 +101,7 @@ export const PAGES_MENU = [
           }
         }
       }
-      
+
     ]
   }
 ];

@@ -21,8 +21,9 @@ export class SapfieldComponent extends BaseComponent {
         this.updateURL  = "uma/system/sapFields/" ;
         this.update_key = "id" ;
         this.filter_key = "FIELDNAME" ;
-        this.paging     = false ;
+        this.paging     = true ;
         this.subPage    = true ;
+        this. pageSize  = 999 ;
     }
 
     updateHook(){

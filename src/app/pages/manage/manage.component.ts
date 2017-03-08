@@ -63,4 +63,34 @@ export class ManageComponent  {
         });
     }
 
+    checkStatus(status){
+        let statusFlag = true ;
+        switch (status) {
+            case "0":
+            case "1":
+                statusFlag = false ;
+                break;
+        }
+        return statusFlag ;
+    }
+
+    startTask(category, status){
+        let startTaskUrl = "uma/system/tasks/category/" + category + "/status/" + status + "/start"
+        this.restApi.getData(startTaskUrl) ;
+        this.refresh() ;
+    }
+
+    stopTask(category, status){
+        let stopTaskUrl = "uma/system/tasks/category/" + category + "/status/" + status + "/stop"
+        this.restApi.getData(stopTaskUrl) ;
+        this.refresh() ;
+    }
+
+    refresh(){
+        this.getSycnToClientDatas() ;
+        this.getBacisTablesDatas() ;
+        this.getAllTablesDatas() ;
+        this.getTablesDeltaDatas() ;
+    }
+
 }

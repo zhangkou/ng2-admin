@@ -43,7 +43,7 @@
                  <td *ngIf="tdata.event_type == 'E0015'">
                    <a routerLink="/pages/sapfield/{{ tdata.TAB_FUNC_NAME }}" routerLinkActive="active">{{ tdata.TAB_FUNC_NAME }}</a>
                  </td>
-                 <td *ng-else>
+                 <td *ngIf="tdata.event_type != 'E0015'">
                    {{ tdata.TAB_FUNC_NAME }}
                  </td>
                  <td>{{ tdata.TAB_COUNT }}</td>
