@@ -1,0 +1,18 @@
+<div class="widgets">
+
+  <div class="row">
+    <div class="col-md-12">
+       <ba-card title="User import" baCardClass="with-scroll table-panel">
+
+          <div class="horizontal-scroll">
+              <div class="form-group">
+                <textarea  class="form-control" id="users" [(ngModel)]="users"></textarea>
+                <span class="help-block sub-little-text">一次可以复制粘贴输入多个用户邮箱，用';'隔开。例如，example1@oryzasoft.com;example2@oryzasoft.com</span>
+              </div>
+              <button type="button" class="btn btn-success" (click)="import($event)">Import</button>
+          </div>
+
+       </ba-card>
+    </div>
+  </div>
+</div>
