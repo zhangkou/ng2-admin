@@ -19,22 +19,22 @@
             <table class="table table-condensed">
               <thead>
               <tr class="black-muted-bg">
+                <th>id</th>
                 <th>task_id</th>
                 <th>run_id</th>
                 <th>log_type</th>
                 <th>log_time</th>
-                <th>id</th>
                 <th>log_desc</th>
                 
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let tdata of tableDatas">
+                <td>{{ tdata.id }}</td>
                 <td>{{ tdata.task_id }}</td>
                 <td>{{ tdata.run_id }}</td>
                 <td>{{ tdata.log_type }}</td>
                 <td>{{ tdata.log_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                <td>{{ tdata.id }}</td>
                 <td>{{ tdata.log_desc }}</td>
               </tr>
               </tbody>

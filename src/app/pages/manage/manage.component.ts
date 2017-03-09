@@ -54,36 +54,50 @@ export class ManageComponent  {
     }
 
     getTablesDeltaDatas(){
-      let url = "uma/system/taskTablesDelta?groupBy=2" ;
-      let getPromise = this.restApi.getData(url)
-        getPromise.then(data => {
-            this.tablesDeltaDatas     =  data["page"].results ;
-        }).catch(error => {
-            console.log(error) ;
-        });
+      let url  = "uma/system/taskTables?filter=category+in+(3,7)&groupBy=2" ;
+      let getPromise = this.restApi.getData(url) ;
+      getPromise.then(data => {
+        this.tablesDeltaDatas     =  data["page"].results ;
+      }).catch(error => {
+        console.log(error) ;
+      });
     }
 
-    checkStatus(status){
-        let statusFlag = true ;
+    sycnJob2Server(){
+        let url = "uma/system/tasks/3831/start" ;
+        this.restApi.getData(url) ;
+    }
+
+    checkStatus(status, scheduled_flag?){
+        if(scheduled_flag == 'S'){
+            return false ;
+        }
+        let startFlag = true ;
         switch (status) {
             case "0":
             case "1":
-                statusFlag = false ;
+                startFlag = false ;
                 break;
         }
-        return statusFlag ;
+        return startFlag ;
     }
 
     startTask(category, status){
         let startTaskUrl = "uma/system/tasks/category/" + category + "/status/" + status + "/start"
         this.restApi.getData(startTaskUrl) ;
         this.refresh() ;
+        if(category == "3,7"){
+            this.sycnJob2Server() ;
+        }
     }
 
     stopTask(category, status){
         let stopTaskUrl = "uma/system/tasks/category/" + category + "/status/" + status + "/stop"
         this.restApi.getData(stopTaskUrl) ;
         this.refresh() ;
+        if(category == "3,7"){
+            this.sycnJob2Server() ;
+        }
     }
 
     refresh(){

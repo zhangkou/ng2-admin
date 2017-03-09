@@ -13,7 +13,7 @@ export class BaseComponent {
     subPage     = false ;
     params      = {} ;
     filter_key  = "" ;
-    param_key   = ["p1", "p2"] ;
+    param_key   = ["p1", "p2", "p3"] ;
     update_key  = "" ;
     pageIndex   = 1 ;
     pageSize    = 5 ;
@@ -85,6 +85,52 @@ export class BaseComponent {
 
     inputChanged(target, tdata){
         tdata.saved=true ;
+    }
+
+    start(target, taskIdName?){
+        if(this.tableDatas){
+            if(!taskIdName){
+                taskIdName = "id" ;
+            }
+            let startTaskUrl = "uma/system/tasks/{{id}}/start " ;
+            let allPutPromise = [] ;
+            this.tableDatas
+                  .filter(value => !!value.saved)
+                  .forEach(value => {
+                      allPutPromise.push(this.restApi.getData(startTaskUrl.replace("{{id}}", value[taskIdName])));
+            }) ;
+            if(allPutPromise && allPutPromise.length > 0){
+                  Promise.all(allPutPromise)
+                    .then(values => {
+                            
+                          }, reason => {
+                            console.log(reason)
+                          });
+            }
+        }
+    }
+
+    stop(target, taskIdName?){
+        if(this.tableDatas){
+            if(!taskIdName){
+                taskIdName = "id" ;
+            }
+            let stopTaskUrl = "uma/system/tasks/{{id}}/stop " ;
+            let allPutPromise = [] ;
+            this.tableDatas
+                  .filter(value => !!value.saved)
+                  .forEach(value => {
+                      allPutPromise.push(this.restApi.getData(stopTaskUrl.replace("{{id}}", value[taskIdName])));
+            }) ;
+            if(allPutPromise && allPutPromise.length > 0){
+                  Promise.all(allPutPromise)
+                    .then(values => {
+                            
+                          }, reason => {
+                            console.log(reason)
+                          });
+            }
+        }
     }
 
     create(target, funcname, eventDes){

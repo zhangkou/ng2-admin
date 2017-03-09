@@ -1,7 +1,10 @@
 <div class="widgets">
   <div class="row">
     <div class="col-md-12">
-      <ory-card title="Rfc Paremeter" baCardClass="with-scroll table-panel" (search)="search($event)" (create)="smModal.show()" (update)="update($event)" (refresh)="refresh($event)">
+      <ory-card title="Rfc Paremeter" baCardClass="with-scroll table-panel"
+                searchShow  = true (search)="search($event)" 
+                updateShow  = true (update)="update($event)" 
+                refreshShow = true (refresh)="refresh($event)">
 
         <div class="horizontal-scroll">
           <table class="table table-condensed">

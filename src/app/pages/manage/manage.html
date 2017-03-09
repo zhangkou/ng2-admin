@@ -6,6 +6,7 @@
     </div>
     <div class="col-md-10">
         <div style="float: right">
+            <button type="button" class="btn btn-info" (click)="sycnJob2Server()">Sync Job</button>
             <button type="button" class="btn btn-info" (click)="refresh($event)">Refresh</button>
         </div>
     </div>
@@ -129,10 +130,13 @@
                  <td class="table-id">
                    
                  </td>
-                 <td>{{ tdata.deltaLoad_SchedueFlag }}</td>
-                 <td><a routerLink="/pages/saptable/{{ tdata.deltaLoad_SchedueKey }}" routerLinkActive="active">{{ tdata.count }}</a></td>
-                 <td>
-                   <button type="button" class="btn btn-success btn-icon"><i class="ion-play"></i></button>
+                 <td>{{ tdata.SCHEDULED_FLAG }} / {{ tdata.task_status }}</td>
+                 <td><a routerLink="/pages/saptable/{{ tdata.SCHEDULED_FLAG }}/{{ tdata.task_status }}/3,7" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td *ngIf="checkStatus(tdata.task_status, tdata.SCHEDULED_FLAG)">
+                   <button type="button" class="btn btn-success btn-icon" (click)="startTask('3,7', tdata.task_status)"><i class="ion-play"></i></button>
+                 </td>
+                 <td *ngIf="!checkStatus(tdata.task_status, tdata.SCHEDULED_FLAG)">
+                   <button type="button" class="btn btn-danger btn-icon" (click)="stopTask('3,7', tdata.task_status)"><i class="ion-stop"></i></button>
                  </td>
               </tr>
               </tbody>

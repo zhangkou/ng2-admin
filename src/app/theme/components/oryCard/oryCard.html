@@ -11,9 +11,11 @@
             </div>
             <div class="col-md-10">
                 <div style="float: right">
-                    <button type="button" class="btn btn-info btn-md" (click)="create.emit($event)">Create</button>
-                    <button type="button" class="btn btn-info" (click)="update.emit($event)">Update</button>
-                    <button type="button" class="btn btn-info" (click)="refresh.emit(searchField)">Refresh</button>
+                    <button *ngIf="startShow"     type="button" class="btn btn-info" (click)="start.emit($event)">Start</button>
+                    <button *ngIf="stopShow"      type="button" class="btn btn-info" (click)="stop.emit($event)">Stop</button>
+                    <button *ngIf="createShow"    type="button" class="btn btn-info" (click)="create.emit($event)">Create</button>
+                    <button *ngIf="updateShow"    type="button" class="btn btn-info" (click)="update.emit($event)">Update</button>
+                    <button *ngIf="refreshShow"   type="button" class="btn btn-info" (click)="refresh.emit(searchField)">Refresh</button>
                 </div>
             </div>
         </div>
