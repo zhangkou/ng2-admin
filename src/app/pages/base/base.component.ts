@@ -5,6 +5,7 @@ import { RESTApi } from '../../restApi.service';
 
 export class BaseComponent {
     listURL     = "" ;
+    listURLS    = [] ;
     subListURL  = "" ;
     createURL   = "" ;
     deleteURL   = "" ;
@@ -40,18 +41,17 @@ export class BaseComponent {
         this.route.params.subscribe((params: Params) => {
             this.params = params ;
             console.log(this.params) ;
-            if(!this.subListURL){
-                this.subListURL = this.listURL ;
+            let  listUrlIndex = this.params["p"] ;
+            if(!listUrlIndex){
+                listUrlIndex = 0 ;
             }
+            this.listURL = this.listURLS[listUrlIndex] ;
+            console.log(this.listURL) ;
             this.param_key.forEach((value) => {
-                if(this.params[value]){  
-                    this.subPage = true ;  
-                    this.subListURL = this.subListURL.replace("{{" + value + "}}", this.params[value]) ;
+                if(this.params[value]){ 
+                    this.listURL = this.listURL.replace("{{" + value + "}}", this.params[value]) ;
                 }
             }) ;
-            if(this.subPage){
-                this.listURL = this.subListURL ;
-            }
             this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
         });
     }

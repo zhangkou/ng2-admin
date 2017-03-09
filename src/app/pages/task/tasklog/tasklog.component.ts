@@ -17,7 +17,9 @@ export class TasklogComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL = "uma/system/tasks/{{p1}}/logs" ;
+        this.listURLS   = [
+            "uma/system/tasks/{{p1}}/logs"
+        ] ;
         this.paging     = false ;
         this.subPage    = true ;
     }

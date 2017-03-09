@@ -18,7 +18,9 @@ export class UserComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL    = "uma/system/users" ;
+        this.listURLS   = [
+            "uma/system/users"
+        ] ;
         this.filter_key = "name" ;
         this.pageSize   = 30 ; 
     }

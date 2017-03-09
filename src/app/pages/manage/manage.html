@@ -14,7 +14,7 @@
 
   <div class="row">
     <div class="col-lg-6 col-md-12">
-      <ba-card title="SycnToClient" baCardClass="with-scroll table-panel">
+      <ba-card title="To Agent" baCardClass="with-scroll table-panel">
         <div class="horizontal-scroll">
             <table class="table table-condensed">
               <thead>
@@ -31,7 +31,7 @@
                    
                  </td>
                  <td>{{ tdata.task_status }}</td>
-                 <td><a routerLink="/pages/task/{{ tdata.task_status }}/12" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td><a routerLink="/pages/task/1/{{ tdata.task_status }}/12" routerLinkActive="active">{{ tdata.count }}</a></td>
                  <td *ngIf="checkStatus(tdata.task_status)">
                    <button type="button" class="btn btn-success btn-icon" (click)="startTask(12, tdata.task_status)"><i class="ion-play"></i></button>
                  </td>
@@ -63,7 +63,7 @@
                    
                  </td>
                  <td>{{ tdata.task_status }}</td>
-                 <td><a routerLink="/pages/task/{{ tdata.task_status }}/1" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td><a routerLink="/pages/task/1/{{ tdata.task_status }}/1" routerLinkActive="active">{{ tdata.count }}</a></td>
                  <td *ngIf="checkStatus(tdata.task_status)">
                    <button type="button" class="btn btn-success btn-icon" (click)="startTask(1, tdata.task_status)"><i class="ion-play"></i></button>
                  </td>
@@ -99,7 +99,7 @@
                    
                  </td>
                  <td>{{ tdata.task_status }}</td>
-                 <td><a routerLink="/pages/task/{{ tdata.task_status }}/2,5" routerLinkActive="active">{{ tdata.count }}</a></td>
+                 <td><a routerLink="/pages/task/1/{{ tdata.task_status }}/2,5" routerLinkActive="active">{{ tdata.count }}</a></td>
                  <td *ngIf="checkStatus(tdata.task_status)">
                    <button type="button" class="btn btn-success btn-icon" (click)="startTask('2,5', tdata.task_status)"><i class="ion-play"></i></button>
                  </td>
@@ -114,7 +114,7 @@
     </div>
 
     <div class="col-lg-6 col-md-12">
-      <ba-card title="TablesDelta" baCardClass="with-scroll table-panel">
+      <ba-card title="Delta" baCardClass="with-scroll table-panel">
         <div class="horizontal-scroll">
             <table class="table table-condensed">
               <thead>

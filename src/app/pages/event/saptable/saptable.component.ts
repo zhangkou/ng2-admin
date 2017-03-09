@@ -17,7 +17,9 @@ export class SaptableComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL    = "uma/system/taskTables?filter=SCHEDULED_FLAG='{{p1}}'+and+task_status+in+({{p2}})+and+category+in+({{p3}})" ;
+        this.listURLS   = [
+            "uma/system/taskTables?filter=SCHEDULED_FLAG='{{p1}}'+and+task_status+in+({{p2}})+and+category+in+({{p3}})"
+        ] ;
         this.paging     = false ;
     }
 }

@@ -17,7 +17,9 @@ export class FormComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL        = "uma/system/forms/all?groupBy=1" ;
+        this.listURLS   = [
+            "uma/system/forms/all?groupBy=1"
+        ] ;
         this.pageSize       = 999 ;
     }
 }

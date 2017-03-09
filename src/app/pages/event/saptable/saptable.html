@@ -36,7 +36,7 @@
                 <td class="table-id">
                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
                 </td>
-                <td>{{ tdata.id }}</td>
+                <td><a routerLink="/pages/tasklog/{{ tdata.id }}" routerLinkActive="active">{{ tdata.id }}</a></td>
                 <td>{{ tdata.run_id }}</td>
                 <td>{{ tdata.TABNAME }}</td>
                 <td>{{ tdata.TAB_COUNT }}</td>

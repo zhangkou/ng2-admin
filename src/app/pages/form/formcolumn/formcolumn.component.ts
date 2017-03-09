@@ -17,7 +17,9 @@ export class FormcolumnComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL    = "uma/system/forms/{{p1}}" ;
+        this.listURLS   = [
+            "uma/system/forms/{{p1}}"
+        ] ;
         this.updateURL  = "uma/system/forms/" ;
         this.update_key = "id" ;
         this.subPage    = true ;

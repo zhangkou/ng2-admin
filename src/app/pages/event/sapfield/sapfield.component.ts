@@ -17,7 +17,9 @@ export class SapfieldComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL    = "uma/system/sapFields/{{p1}}" ;
+        this.listURLS   = [
+            "uma/system/sapFields/{{p1}}"
+        ] ;
         this.updateURL  = "uma/system/sapFields/" ;
         this.update_key = "id" ;
         this.filter_key = "FIELDNAME" ;

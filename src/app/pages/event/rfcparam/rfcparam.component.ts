@@ -17,7 +17,9 @@ export class RfcparamComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL    = "uma/system/saprfcParameters/{{p1}}" ;
+        this.listURLS   = [
+            "uma/system/saprfcParameters/{{p1}}"
+        ] ;
         this.updateURL  = "uma/system/saprfcParameters/" ;
         this.update_key = "FUNCNAME" ;
         this.filter_key = "PARAMETER" ;

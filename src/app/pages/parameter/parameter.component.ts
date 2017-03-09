@@ -18,7 +18,9 @@ export class ParameterComponent extends BaseComponent {
     }
 
     init(){
-        this.listURL    = "uma/system/dmParameters" ;
+        this.listURLS   = [
+            "uma/system/dmParameters"
+        ] ;
         this.updateURL  = "uma/system/dmParameters/" ;
         this.update_key = "id" ;
         this.pageSize   = 100 ;
