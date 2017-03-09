@@ -28,4 +28,7 @@ export class OryCard {
   @Input()  stopShow:Boolean;
   @Output() stop = new EventEmitter<any>();
 
+  @Input()  contentShow:Boolean;
+  @Output() content = new EventEmitter<any>();
+
 }

@@ -16,6 +16,7 @@
                     <button *ngIf="createShow"    type="button" class="btn btn-info" (click)="create.emit($event)">Create</button>
                     <button *ngIf="updateShow"    type="button" class="btn btn-info" (click)="update.emit($event)">Update</button>
                     <button *ngIf="refreshShow"   type="button" class="btn btn-info" (click)="refresh.emit(searchField)">Refresh</button>
+                    <button *ngIf="contentShow"   type="button" class="btn btn-info" (click)="content.emit($event)">Show</button>
                 </div>
             </div>
         </div>

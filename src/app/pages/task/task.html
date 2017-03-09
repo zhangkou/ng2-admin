@@ -7,7 +7,8 @@
                searchShow  = true (search)="search($event)"
                startShow   = true (start)="start($event)" 
                stopShow    = true (stop)="stop($event)" 
-               refreshShow = true (refresh)="refresh($event)">
+               refreshShow = true (refresh)="refresh($event)"
+               contentShow = true  (content)="toggleContentShow($event)">
           <div class="horizontal-scroll">
             <table class="table table-condensed">
               <thead>
@@ -61,9 +62,9 @@
                  <td>{{ tdata.execution_time }}</td>
                  <td>{{ tdata.input_paras }}</td>
                  <td>{{ tdata.output_paras }}</td>
-                 <td>{{ tdata.JSON_CONTENT }}</td>
-                 <td>{{ tdata.POST_CONTENT }}</td>
-                 <td> </td>
+                 <td><div *ngIf="contentShowFlag">{{ tdata.JSON_CONTENT }}</div></td>
+                 <td><div *ngIf="contentShowFlag">{{ tdata.POST_CONTENT }}</div></td>
+                 <td><div *ngIf="contentShowFlag">{{ tdata.user_exit }}</div></td>
                  <td>{{ tdata.message_key }}</td>
               </tr>
               </tbody>

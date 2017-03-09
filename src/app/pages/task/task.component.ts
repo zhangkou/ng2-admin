@@ -20,5 +20,6 @@ export class TaskComponent extends BaseComponent {
         this.listURL        = "uma/system/tasks" ;
         this.subListURL     = "uma/system/tasks?filter=task_status+in+({{p1}})+and+category+in+({{p2}})" ;
         this.filter_key     = "event_type" ;
+        this.pageSize       = 10 ;
     }
 }

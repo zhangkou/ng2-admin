@@ -19,6 +19,7 @@ export class BaseComponent {
     pageSize    = 5 ;
     totalPage   = 0 ;
     totalCount  = 0 ;
+    contentShowFlag = false ;
 
     tableDatas:Array<any>;
     
@@ -130,6 +131,15 @@ export class BaseComponent {
                             console.log(reason)
                           });
             }
+        }
+    }
+
+    toggleContentShow(target){
+        this.contentShowFlag = !this.contentShowFlag ;
+        if(this.contentShowFlag){
+            target.target.innerHTML = "Hide" ;
+        }else{
+            target.target.innerHTML= "Show" ;
         }
     }
 
