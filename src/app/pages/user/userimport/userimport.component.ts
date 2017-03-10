@@ -44,7 +44,7 @@ export class UserimportComponent {
         let userArray = this.users.replace(/[\r\n]/g, ";").split(";") ;
         this.tableDatas = userArray
             .filter(userEmail =>{
-              return !!userEmail && userEmail.indexOf("@") > 0;
+              return !!userEmail && this.validateEmail(userEmail);
             })
             .map(userEmail => {
               return {
@@ -56,5 +56,10 @@ export class UserimportComponent {
       }else{
         this.tableDatas = [] ;
       }
+    }
+
+    validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     }
 }
