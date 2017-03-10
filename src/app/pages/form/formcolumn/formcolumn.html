@@ -13,28 +13,23 @@
               <thead>
               <tr class="black-muted-bg">
                 <th>#</th>
-                <th>id</th>
-                <th>label_id</th>
-                <th>form_name</th>
                 <th>field_name</th>
-                <th>type</th>
+                <th>label_id</th>
+                <th>Text1</th>
                 <th>structure_name</th>
+                <th>type&nbsp;&nbsp;</th>
                 <th>required</th>
                 <th>position</th>
-                <th>href</th>
+                <th>href&nbsp;&nbsp;</th>
                 <th>href_text_field</th>
                 <th>href_key_field</th>
                 <th>min_value</th>
                 <th>max_value</th>
                 <th>defalut_value</th>
-                <th>LanguageKey</th>
                 <th>width</th>
                 <th>disable</th>
                 <th>hide</th>
-                <th>Text1</th>
-                <th>Text2</th>
-                <th>Text3</th>
-                <th>Text4</th>
+                <th>lang</th>
                 <th>comments</th>
               </tr>
               </thead>
@@ -43,12 +38,23 @@
                  <td class="table-id">
                    <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
                  </td>
-                 <td>{{ tdata.id }}</td>
-                 <td>{{ tdata.label_id }}</td>
-                 <td>{{ tdata.form_name }}</td>
                  <td>{{ tdata.field_name }}</td>
-                 <td>{{ tdata.type }}</td>
-                 <td>{{ tdata.structure_name }}</td>
+                 <td>{{ tdata.label_id }}</td>
+                 <td style="white-space: nowrap;">{{ tdata.Text1 }}</td>
+                 <td>
+                  <input type="text" class="form-control form-control-sm" name="structure_name" id="structure_name" 
+                          #structure_name
+                          placeholder="{{ tdata.structure_name }}" 
+                          [(ngModel)]="tdata.structure_name"
+                          (change)="inputChanged(structure_name, tdata)">
+                </td>
+                <td>
+                  <input type="text" class="form-control form-control-sm" name="type" id="type" 
+                          #type
+                          placeholder="{{ tdata.type }}" 
+                          [(ngModel)]="tdata.type"
+                          (change)="inputChanged(type, tdata)">
+                </td>
                  <td>
                   <input type="text" class="form-control form-control-sm" name="required" id="required" 
                           #required
@@ -106,13 +112,6 @@
                           (change)="inputChanged(defalut_value, tdata)">
                 </td>
                 <td>
-                  <input type="text" class="form-control form-control-sm" name="LanguageKey" id="LanguageKey" 
-                          #LanguageKey
-                          placeholder="{{ tdata.LanguageKey }}" 
-                          [(ngModel)]="tdata.LanguageKey"
-                          (change)="inputChanged(LanguageKey, tdata)">
-                </td>
-                <td>
                   <input type="text" class="form-control form-control-sm" name="width" id="width" 
                           #width
                           placeholder="{{ tdata.width }}" 
@@ -133,10 +132,7 @@
                           [(ngModel)]="tdata.hide"
                           (change)="inputChanged(hide, tdata)">
                 </td>
-                <td>{{ tdata.Text1 }}</td>
-                <td>{{ tdata.Text2 }}</td>
-                <td>{{ tdata.Text3 }}</td>
-                <td>{{ tdata.Text4 }}</td>
+                <td>{{ tdata.LanguageKey }}</td>
                 <td>{{ tdata.comments }}</td>
               </tr>
               </tbody>

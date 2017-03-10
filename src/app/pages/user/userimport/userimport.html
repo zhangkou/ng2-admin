@@ -1,18 +1,47 @@
 <div class="widgets">
 
   <div class="row">
-    <div class="col-md-12">
+    
+    <div class="col-lg-4 col-md-12">
        <ba-card title="User import" baCardClass="with-scroll table-panel">
 
           <div class="horizontal-scroll">
               <div class="form-group">
-                <textarea  class="form-control" id="users" [(ngModel)]="users"></textarea>
+                <textarea  class="form-control" id="users" [(ngModel)]="users" (ngModelChange)="onChange()"></textarea>
                 <span class="help-block sub-little-text">一次可以复制粘贴输入多个用户邮箱，用';'隔开。例如，example1@oryzasoft.com;example2@oryzasoft.com</span>
               </div>
               <button type="button" class="btn btn-success" (click)="import($event)">Import</button>
           </div>
 
        </ba-card>
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <ba-card title="Import User" baCardClass="with-scroll table-panel">
+        <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>STATUS</th>
+                <th>MESSAGE</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas; let id = index;">
+                 <td class="table-id">
+                   {{ id }}
+                 </td>
+                 <td>{{ tdata.name }}</td>
+                 <td>{{ tdata.email }}</td>
+                 <td>{{ tdata.status }}</td>
+                 <td style="white-space: nowrap;">{{ tdata.text }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+      </ba-card>
     </div>
   </div>
 </div>
