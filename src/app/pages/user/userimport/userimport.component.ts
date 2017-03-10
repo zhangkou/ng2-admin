@@ -40,7 +40,7 @@ export class UserimportComponent {
     }
 
     onChange(){
-      if(this.users && this.users.indexOf("@") > 0){
+      if(this.users){
         let userArray = this.users.replace(/[\r\n]/g, ";").split(";") ;
         this.tableDatas = userArray
             .filter(userEmail =>{
