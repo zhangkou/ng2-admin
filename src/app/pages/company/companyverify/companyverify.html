@@ -1,0 +1,46 @@
+<div class="widgets">
+
+  
+  <div class="row">
+    <div class="col-md-12">
+      <ory-card title="Comapny verify" baCardClass="with-scroll table-panel"
+               searchShow  = true (search)="search($event)"
+               button1Show = true (button1)="verify($event)" button1Text = "Verify"
+               refreshShow = true (refresh)="refresh($event)">
+          <div class="horizontal-scroll">
+            <table class="table table-condensed">
+              <thead>
+              <tr class="black-muted-bg">
+                <th class="table-id">#</th>
+                <th>ID</th>
+                <th>USERID</th>
+                <th>EMAIL</th>
+                <th>COMPANY</th>
+                <th>COMPANYID</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let tdata of tableDatas">
+                 <td class="table-id">
+                   <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                 </td>
+                 <td>{{ tdata.id }}</td>
+                 <td>{{ tdata.userId }}</td>
+                 <td>{{ tdata.email }}</td>
+                 <td>{{ tdata.company }}</td>
+                 <td>
+                  <input type="text" class="form-control form-control-sm" name="companyid" id="companyid" 
+                          #companyid
+                          placeholder="{{ tdata.companyid }}" 
+                          [(ngModel)]="tdata.companyid"
+                          (change)="inputChanged(companyid, tdata)">
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+       </ory-card>
+    </div>
+  </div>
+ 
+</div>

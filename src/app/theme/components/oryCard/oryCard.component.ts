@@ -31,4 +31,24 @@ export class OryCard {
   @Input()  contentShow:Boolean;
   @Output() content = new EventEmitter<any>();
 
+  @Input()  button1Show:Boolean;
+  @Input()  button1Text:Boolean;
+  @Output() button1 = new EventEmitter<any>();
+
+  @Input()  button2Show:Boolean;
+  @Input()  button2Text:Boolean;
+  @Output() button2 = new EventEmitter<any>();
+
+  @Input()  button3Show:Boolean;
+  @Input()  button3Text:Boolean;
+  @Output() button3 = new EventEmitter<any>();
+
+  @Input()  button4Show:Boolean;
+  @Input()  button4Text:Boolean;
+  @Output() button4 = new EventEmitter<any>();
+
+  @Input()  button5Show:Boolean;
+  @Input()  button5Text:Boolean;
+  @Output() button5 = new EventEmitter<any>();
+
 }

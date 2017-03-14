@@ -16,6 +16,37 @@ export const PAGES_MENU = [
       },
 
       {
+        path: 'platform',
+        data: {
+          menu: {
+            title: 'Platform',
+            icon: 'ion-android-apps',
+            selected: false,
+            expanded: false,
+            order: 100,
+          }
+        },
+        children: [
+          {
+            path: 'companylist',
+            data: {
+              menu: {
+                title: 'Company list',
+              }
+            }
+          },
+          {
+            path: 'companyapprove',
+            data: {
+              menu: {
+                title: 'Company approve',
+              }
+            }
+          }
+        ]
+      },
+
+      {
         path: 'user',
         data: {
           menu: {
@@ -23,7 +54,7 @@ export const PAGES_MENU = [
             icon: 'ion-person-stalker',
             selected: false,
             expanded: false,
-            order: 100,
+            order: 200,
           }
         },
         children: [
@@ -55,7 +86,7 @@ export const PAGES_MENU = [
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
-            order: 200
+            order: 300
           }
         }
       },
@@ -69,7 +100,7 @@ export const PAGES_MENU = [
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
-            order: 300
+            order: 400
           }
         }
       },
@@ -83,7 +114,7 @@ export const PAGES_MENU = [
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
-            order: 400
+            order: 500
           }
         }
       },
@@ -97,7 +128,7 @@ export const PAGES_MENU = [
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
-            order: 500
+            order: 600
           }
         }
       },
@@ -111,7 +142,7 @@ export const PAGES_MENU = [
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: false,
-            order: 600
+            order: 700
           }
         }
       }

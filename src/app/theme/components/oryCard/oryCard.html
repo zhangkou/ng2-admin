@@ -15,6 +15,11 @@
                     <button *ngIf="stopShow"      type="button" class="btn btn-info" (click)="stop.emit($event)">Stop</button>
                     <button *ngIf="createShow"    type="button" class="btn btn-info" (click)="create.emit($event)">Create</button>
                     <button *ngIf="updateShow"    type="button" class="btn btn-info" (click)="update.emit($event)">Update</button>
+                    <button *ngIf="button1Show"   type="button" class="btn btn-info" (click)="button1.emit($event)">{{button1Text}}</button>
+                    <button *ngIf="button2Show"   type="button" class="btn btn-info" (click)="button2.emit($event)">{{button2Text}}</button>
+                    <button *ngIf="button3Show"   type="button" class="btn btn-info" (click)="button3.emit($event)">{{button3Text}}</button>
+                    <button *ngIf="button4Show"   type="button" class="btn btn-info" (click)="button4.emit($event)">{{button4Text}}</button>
+                    <button *ngIf="button5Show"   type="button" class="btn btn-info" (click)="button5.emit($event)">{{button5Text}}</button>
                     <button *ngIf="refreshShow"   type="button" class="btn btn-info" (click)="refresh.emit(searchField)">Refresh</button>
                     <button *ngIf="contentShow"   type="button" class="btn btn-info" (click)="content.emit($event)">Show</button>
                 </div>

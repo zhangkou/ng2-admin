@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => System.import('./register/register.module')
   },
   {
+    path: 'adminlogin',
+    loadChildren: () => System.import('./adminlogin/adminlogin.module')
+  },
+  {
     path: 'pages',
     component: Pages,
     canActivate: [AuthGuard],
@@ -28,6 +32,8 @@ const routes: Routes = [
       { path: 'tables', loadChildren: () => System.import('./tables/tables.module') },
       { path: 'maps', loadChildren: () => System.import('./maps/maps.module') },
       { path: 'new',  loadChildren: () => System.import('./new/new.module') },
+      { path: 'platform/companylist',  loadChildren: () => System.import('./company/company.module') },
+      { path: 'platform/companyapprove',  loadChildren: () => System.import('./company/companyverify/companyverify.module') },
       { path: 'user/import',  loadChildren: () => System.import('./user/userimport/userimport.module') },
       { path: 'user/list',  loadChildren: () => System.import('./user/user.module') },
       { path: 'task',  loadChildren: () => System.import('./task/task.module') },
