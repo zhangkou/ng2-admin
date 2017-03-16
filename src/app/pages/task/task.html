@@ -7,6 +7,7 @@
                searchShow  = true (search)="search($event)"
                startShow   = true (start)="start($event)" 
                stopShow    = true (stop)="stop($event)" 
+               button1Show = true (button1)="importTable($event)" button1Text = "Re-importTable"
                refreshShow = true (refresh)="refresh($event)"
                contentShow = true  (content)="toggleContentShow($event)">
           <div class="horizontal-scroll">
@@ -16,7 +17,7 @@
                 <th class="table-id">#</th>
                 <th>ID</th>
                 <th>RUN</th>
-                <th>TS</th>
+                <th>S</th>
                 <th>EVENT</th>
                 <th>USER</th>
                 <th>TRIGGER</th>
@@ -57,11 +58,11 @@
                  </td>
                  <td>{{ tdata.TAB_COUNT }}</td>
                  <td>{{ tdata.MESSAGE }}</td>
-                 <td  style="white-space: nowrap;">{{ tdata.start_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                 <td  style="white-space: nowrap;">{{ tdata.end_time  | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                 <td  style="white-space: nowrap;">{{ tdata.start_time  | date:'MM-dd HH:mm:ss' }}</td>
+                 <td  style="white-space: nowrap;">{{ tdata.end_time  | date:'MM-dd HH:mm:ss' }}</td>
                  <td>{{ tdata.execution_time }}</td>
-                 <td>{{ tdata.input_paras }}</td>
-                 <td>{{ tdata.output_paras }}</td>
+                 <td><div *ngIf="contentShowFlag">{{ tdata.input_paras }}</div></td>
+                 <td><div *ngIf="contentShowFlag">{{ tdata.output_paras }}</div></td>
                  <td><div *ngIf="contentShowFlag">{{ tdata.JSON_CONTENT }}</div></td>
                  <td><div *ngIf="contentShowFlag">{{ tdata.POST_CONTENT }}</div></td>
                  <td><div *ngIf="contentShowFlag">{{ tdata.user_exit }}</div></td>

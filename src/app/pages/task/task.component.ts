@@ -24,4 +24,31 @@ export class TaskComponent extends BaseComponent {
         this.filter_key     = "event_type" ;
         this.pageSize       = 10 ;
     }
+
+    importTable(target){
+        if(this.tableDatas){
+            let allPostPromise = [] ;
+            let importTableUrl      = "uma/sap/tables?taskAction=import" ;
+            this.tableDatas
+                .filter(value => !!value.saved && value.event_type == 'E0015')
+                .forEach(value => {
+                    let postContent = {
+                        TABNAME: value.TAB_FUNC_NAME,
+                        jpush_str1: "jpush_str_valueZ01",
+                        jpush_str2: "jpush_str_valueZ02",
+                        jpush_str3: "jpush_str_valueZ03",
+                        jpush_str4: "jpush_str_valueZ04"
+                    } ;
+                    allPostPromise.push(this.restApi.postData(importTableUrl, postContent));
+                }) ;
+            if(allPostPromise && allPostPromise.length > 0){
+                Promise.all(allPostPromise)
+                       .then(values => {
+                            this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
+                        }, reason => {
+                            console.log(reason)
+                        });
+            }
+        }
+    }
 }
