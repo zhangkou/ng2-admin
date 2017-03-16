@@ -38,7 +38,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageIndex, totalItems: totalCount }">
+              <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageIndex, totalItems: totalCount }"  [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
                  </td>

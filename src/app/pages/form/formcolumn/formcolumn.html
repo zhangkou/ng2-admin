@@ -34,7 +34,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of tableDatas">
+              <tr *ngFor="let tdata of tableDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
                  </td>

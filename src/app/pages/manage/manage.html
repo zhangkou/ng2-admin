@@ -26,7 +26,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of sycnToClientDatas">
+              <tr *ngFor="let tdata of sycnToClientDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
                  </td>
@@ -58,7 +58,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of bacisTablesDatas">
+              <tr *ngFor="let tdata of bacisTablesDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
                  </td>
@@ -94,7 +94,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of allTablesDatas">
+              <tr *ngFor="let tdata of allTablesDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
                  </td>
@@ -126,7 +126,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let tdata of tablesDeltaDatas">
+              <tr *ngFor="let tdata of tablesDeltaDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
                  </td>
