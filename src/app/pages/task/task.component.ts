@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'task',
+  styles: [require('./task.scss')],
   template: require('./task.html')
 })
 

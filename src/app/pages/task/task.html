@@ -18,6 +18,7 @@
                 <th>ID</th>
                 <th>RUN</th>
                 <th>S</th>
+                <th>S</th>
                 <th>EVENT</th>
                 <th>USER</th>
                 <th>TRIGGER</th>
@@ -44,6 +45,13 @@
                  </td>
                  <td><a routerLink="/pages/tasklog/{{ tdata.id }}" routerLinkActive="active">{{ tdata.id }}</a></td>
                  <td>{{ tdata.run_id }}</td>
+                 <td [ngClass]="{'greenLightbulb':   tdata.task_status == '3',
+                                 'redLightbulb':     tdata.task_status == '9',
+                                 'greyLightbulb':    tdata.task_status == '8',
+                                 'blueLightbulb':    tdata.task_status == '7',
+                                 'yellowLightbulb': (tdata.task_status == '0' || tdata.task_status == '1')}">
+                   <i class="ion-record"></i>
+                 </td>
                  <td>{{ tdata.task_status }}</td>
                  <td>{{ tdata.event_type }}</td>
                  <td>{{ tdata.user_id }}</td>

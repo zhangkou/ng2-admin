@@ -103,7 +103,7 @@ export class BaseComponent {
             if(allPutPromise && allPutPromise.length > 0){
                   Promise.all(allPutPromise)
                     .then(values => {
-                            
+                            this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
                           }, reason => {
                             console.log(reason)
                           });
@@ -126,7 +126,7 @@ export class BaseComponent {
             if(allPutPromise && allPutPromise.length > 0){
                   Promise.all(allPutPromise)
                     .then(values => {
-                            
+                            this.list(this.listURL, this.paging, this.pageIndex, this.pageSize) ;
                           }, reason => {
                             console.log(reason)
                           });

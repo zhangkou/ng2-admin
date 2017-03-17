@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'manage',
+  styles: [require('./manage.scss')],
   template: require('./manage.html')
 })
 

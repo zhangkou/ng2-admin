@@ -20,6 +20,7 @@
               <thead>
               <tr class="black-muted-bg">
                 <th class="table-id"></th>
+                <th></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -29,6 +30,13 @@
               <tr *ngFor="let tdata of sycnToClientDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
+                 </td>
+                 <td [ngClass]="{'greenLightbulb':   tdata.task_status == '3',
+                                 'redLightbulb':     tdata.task_status == '9',
+                                 'greyLightbulb':    tdata.task_status == '8',
+                                 'blueLightbulb':    tdata.task_status == '7',
+                                 'yellowLightbulb': (tdata.task_status == '0' || tdata.task_status == '1')}">
+                   <i class="ion-record"></i>
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/1/{{ tdata.task_status }}/12" routerLinkActive="active">{{ tdata.count }}</a></td>
@@ -52,6 +60,7 @@
               <thead>
               <tr class="black-muted-bg">
                 <th class="table-id"></th>
+                <th></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -61,6 +70,13 @@
               <tr *ngFor="let tdata of bacisTablesDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
+                 </td>
+                 <td [ngClass]="{'greenLightbulb':   tdata.task_status == '3',
+                                 'redLightbulb':     tdata.task_status == '9',
+                                 'greyLightbulb':    tdata.task_status == '8',
+                                 'blueLightbulb':    tdata.task_status == '7',
+                                 'yellowLightbulb': (tdata.task_status == '0' || tdata.task_status == '1')}">
+                   <i class="ion-record"></i>
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/1/{{ tdata.task_status }}/1" routerLinkActive="active">{{ tdata.count }}</a></td>
@@ -88,6 +104,7 @@
               <thead>
               <tr class="black-muted-bg">
                 <th class="table-id"></th>
+                <th></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -97,6 +114,13 @@
               <tr *ngFor="let tdata of allTablesDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
+                 </td>
+                 <td [ngClass]="{'greenLightbulb':   tdata.task_status == '3',
+                                 'redLightbulb':     tdata.task_status == '9',
+                                 'greyLightbulb':    tdata.task_status == '8',
+                                 'blueLightbulb':    tdata.task_status == '7',
+                                 'yellowLightbulb': (tdata.task_status == '0' || tdata.task_status == '1')}">
+                   <i class="ion-record"></i>
                  </td>
                  <td>{{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/task/1/{{ tdata.task_status }}/2,5" routerLinkActive="active">{{ tdata.count }}</a></td>
@@ -120,6 +144,7 @@
               <thead>
               <tr class="black-muted-bg">
                 <th class="table-id"></th>
+                <th></th>
                 <th>STATUS</th>
                 <th>COUNT</th>
                 <th>ACTION</th>
@@ -129,6 +154,13 @@
               <tr *ngFor="let tdata of tablesDeltaDatas" [ngClass]="{'success': tdata.saved}">
                  <td class="table-id">
                    
+                 </td>
+                 <td [ngClass]="{'greenLightbulb':   tdata.task_status == '3',
+                                 'redLightbulb':     tdata.task_status == '9',
+                                 'greyLightbulb':    tdata.task_status == '8',
+                                 'blueLightbulb':    tdata.task_status == '7',
+                                 'yellowLightbulb': (tdata.task_status == '0' || tdata.task_status == '1')}">
+                   <i class="ion-record"></i>
                  </td>
                  <td>{{ tdata.SCHEDULED_FLAG }} / {{ tdata.task_status }}</td>
                  <td><a routerLink="/pages/saptable/{{ tdata.SCHEDULED_FLAG }}/{{ tdata.task_status }}/3,7" routerLinkActive="active">{{ tdata.count }}</a></td>
