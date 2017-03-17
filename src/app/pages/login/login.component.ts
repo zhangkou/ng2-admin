@@ -58,6 +58,7 @@ export class Login {
                     if (data.message_rest.type == 'S') {
                         this.token = data.page.results[0].token ;
                         this.appState.set("token", this.token) ;
+                        this.appState.set("email", email) ;
                         resolve(true);
                     }
                     else

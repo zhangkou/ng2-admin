@@ -75,6 +75,7 @@ export class AdminLogin {
     getPromise.then(data => {
         this.token = data["page"].results[0].token ;
         this.appState.set("token", this.token) ;
+        this.appState.set("email", email) ;
         this.router.navigate(["pages"]) ;
         console.log(this.appState.get("token")) ;
     }).catch(error => {

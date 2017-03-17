@@ -150,3 +150,56 @@ export const PAGES_MENU = [
     ]
   }
 ];
+
+export const PAGES_MENU2 = [
+  {
+    path: 'pages',
+    children: [
+      {
+        path: 'dashboard',
+        data: {
+          menu: {
+            title: 'Dashboard',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      
+      {
+        path: 'user',
+        data: {
+          menu: {
+            title: 'User',
+            icon: 'ion-person-stalker',
+            selected: false,
+            expanded: false,
+            order: 200,
+          }
+        },
+        children: [
+          {
+            path: 'import',
+            data: {
+              menu: {
+                title: 'User import',
+              }
+            }
+          },
+          {
+            path: 'list',
+            data: {
+              menu: {
+                title: 'User list',
+              }
+            }
+          }
+        ]
+      }
+
+    ]
+  }
+];
+
