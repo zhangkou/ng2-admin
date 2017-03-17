@@ -5,7 +5,10 @@
     <div class="col-md-12">
       <ory-card title="Event" baCardClass="with-scroll table-panel"
                 searchShow  = true (search)="search($event)" 
-                updateShow  = true (update)="update($event)" 
+                button1Show = true (button1)="changeStatus(4)" button1Text = "Lock"
+                button2Show = true (button2)="changeStatus(3)" button2Text = "Unlock"
+                button3Show = true (button3)="changeStatus(3)" button3Text = "Approve"
+                button4Show = true (button4)="changeStatus(9)" button4Text = "Delete"
                 refreshShow = true (refresh)="refresh($event)">
           <div class="horizontal-scroll">
             <table class="table table-condensed">
@@ -16,6 +19,7 @@
                 <th>USER</th>
                 <th>NAME</th>
                 <th>EMAIL</th>
+                <th></th>
                 <th>STATUS</th>
                 <th>LS</th>
                 <th>LT</th>
@@ -40,6 +44,12 @@
                  <td>{{ tdata.user_id }}</td>
                  <td>{{ tdata.name }}</td>
                  <td>{{ tdata.email }}</td>
+                 <td [ngClass]="{'greenLightbulb':   tdata.user_status == '3',
+                                 'redLightbulb':     tdata.user_status == '5',
+                                 'greyLightbulb':    tdata.user_status == '4',
+                                 'yellowLightbulb':  tdata.user_status == '2'}">
+                   <i class="ion-record"></i>
+                 </td>
                  <td>{{ tdata.user_status }}</td>
                  <td>{{ tdata.login_status }}</td>
                  <td>{{ tdata.login_time | date:'yyyy-MM-dd HH:mm:ss' }}</td>

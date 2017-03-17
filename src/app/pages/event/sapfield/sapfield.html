@@ -15,7 +15,7 @@
                 <th>FIELDNAME</th>
                 <th>DDTEXT</th>
                 <th>K</th>
-                <th>K</th>
+                <th>DM_K</th>
                 <th>EXC</th>
                 <th>LKP</th>
                 <th>SEQ_NO</th>
@@ -41,10 +41,11 @@
                 <td style="white-space: nowrap;">{{ tdata.DDTEXT }}</td>
                 <td>{{ tdata.KEYFLAG }}</td>
                 <td>
-                  <input type="checkbox" name="DM_KEYFLAG" id="DM_KEYFLAG"
+                  <input type="text" class="form-control form-control-sm" name="DM_KEYFLAG" id="DM_KEYFLAG" 
                           #DM_KEYFLAG
-                          [checked]="tdata.DM_KEYFLAG == toggles[0].value" 
-                          (change)="checkboxChanged(DM_KEYFLAG, tdata)">
+                          placeholder="{{ tdata.DM_KEYFLAG }}" 
+                          [(ngModel)]="tdata.DM_KEYFLAG"
+                          (change)="inputChanged(DM_KEYFLAG, tdata)">
                 </td>
                 <td>
                   <input type="checkbox" name="DM_EXCLUDE_FLAG" id="DM_EXCLUDE_FLAG"
