@@ -31,7 +31,7 @@
               <tbody>
               <tr *ngFor="let tdata of tableDatas | filterBy: stringFilter" [ngClass]="{'success': tdata.saved}">
                 <td class="table-id">
-                  <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved">
+                  <input type="checkbox" name="saved" id="saved" [(ngModel)]="tdata.saved" [disabled]="tdata.COMPANY_GUID == '40288b8147cd16ce0147cd236df20000'">
                 </td>
                 <td>{{ tdata.COMPANY_GUID }}</td>
                 <td>{{ tdata.CMY_NAME }}</td>
