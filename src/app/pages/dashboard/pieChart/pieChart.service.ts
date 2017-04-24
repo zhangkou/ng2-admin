@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BaThemeConfigProvider, colorHelper} from '../../../theme';
+import { RESTApi } from '../../../restApi.service';
 
 @Injectable()
 export class PieChartService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _baConfig:BaThemeConfigProvider, protected restApi: RESTApi) {
   }
 
   getData() {
@@ -13,28 +14,68 @@ export class PieChartService {
       {
         color: pieColor,
         description: '所有用户',
-        stats: '57,820',
+        stats: '0',
         icon: 'person',
-        percent: '90'
+        percent: ""
       }, {
         color: pieColor,
         description: '激活用户',
-        stats: '89,745',
+        stats: '0',
         icon: 'money',
-        percent: '60'
+        percent: ''
       }, {
         color: pieColor,
         description: '24小时所有任务',
-        stats: '178,391',
+        stats: '0',
         icon: 'face',
-        percent: '80'
+        percent: ''
       }, {
         color: pieColor,
         description: '24小时失败任务',
-        stats: '32,592',
+        stats: '0',
         icon: 'refresh',
-        percent: '99'
+        percent: ''
       }
     ];
+  }
+
+  getAllUsers(user) {
+    let url = "uma/system/users?onlyCount=X" ;
+    let getPromise = this.restApi.getData(url)
+    getPromise.then(data => {
+        user.stats     =  data["results"] ;
+    }).catch(error => {
+        console.log(error) ;
+    });
+  }
+
+  getActivedUsers(user) {
+    let url = "uma/system/users?filter=login_status=1&onlyCount=X" ;
+    let getPromise = this.restApi.getData(url)
+    getPromise.then(data => {
+        user.stats     =  data["results"] ;
+    }).catch(error => {
+        console.log(error) ;
+    });
+  }
+
+  getAllTask(task) {
+    let url = "uma/system/tasks?onlyCount=X&filter=TIMESTAMPDIFF(SECOND, start_time, now()) <=86400" ;
+    let getPromise = this.restApi.getData(url)
+    getPromise.then(data => {
+        task.stats     =  data["results"] ;
+    }).catch(error => {
+        console.log(error) ;
+    });
+  }
+
+  getFailedTask(task) {
+    let url = "uma/system/tasks?onlyCount=X&filter=TIMESTAMPDIFF(SECOND, start_time, now()) <=86400 and task_status=9" ;
+    let getPromise = this.restApi.getData(url)
+    getPromise.then(data => {
+        task.stats     =  data["results"] ;
+    }).catch(error => {
+        console.log(error) ;
+    });
   }
 }

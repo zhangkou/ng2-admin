@@ -14,13 +14,35 @@ import {TrafficChartService} from './trafficChart.service';
 export class TrafficChart {
 
   public doughnutData: Array<Object>;
+  public user: Object = {
+      count: ""
+    } ;
 
   constructor(private trafficChartService:TrafficChartService) {
     this.doughnutData = trafficChartService.getData();
   }
 
   ngAfterViewInit() {
-    this._loadDoughnutCharts();
+    let that = this ;
+    this.trafficChartService.getAllUsers(this.user) ;
+    this.trafficChartService.getGroupUsers().then(data => {
+        let  groupedUser    =  data["page"].results ;
+        if(groupedUser){
+          let mUsers = new Map() ;
+          groupedUser.forEach((u, index) => {
+            mUsers.set(u.user_status, u) ;
+          });
+          that.doughnutData.forEach(u => {
+            let user = mUsers.get(u["order"]+"") ;
+            u["value"] = user.count ;
+            u["count"] = user.count ;
+          });
+        }  
+        that._loadDoughnutCharts();
+    }).catch(error => {
+        console.log(error) ;
+        that._loadDoughnutCharts();
+    }); ;
   }
 
   private _loadDoughnutCharts() {

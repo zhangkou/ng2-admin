@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BaThemeConfigProvider, colorHelper} from '../../../theme';
+import { RESTApi } from '../../../restApi.service';
 
 @Injectable()
 export class TrafficChartService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _baConfig:BaThemeConfigProvider, protected restApi: RESTApi) {
   }
 
 
@@ -12,41 +13,53 @@ export class TrafficChartService {
     let dashboardColors = this._baConfig.get().colors.dashboard;
     return [
       {
-        value: 2000,
-        color: dashboardColors.white,
-        highlight: colorHelper.shade(dashboardColors.white, 15),
-        label: 'Other',
-        percentage: 87,
-        order: 1,
-      }, {
-        value: 1500,
+        value: 100,
         color: dashboardColors.gossip,
         highlight: colorHelper.shade(dashboardColors.gossip, 15),
-        label: 'Search engines',
-        percentage: 22,
-        order: 4,
+        label: 'New',
+        percentage: 50,
+        order: 2,
+        count: 0
       }, {
-        value: 1000,
+        value: 100,
         color: dashboardColors.silverTree,
         highlight: colorHelper.shade(dashboardColors.silverTree, 15),
-        label: 'Referral Traffic',
-        percentage: 70,
+        label: 'Normal',
+        percentage: 50,
         order: 3,
+        count: 0
       }, {
-        value: 1200,
+        value: 100,
         color: dashboardColors.surfieGreen,
         highlight: colorHelper.shade(dashboardColors.surfieGreen, 15),
-        label: 'Direct Traffic',
-        percentage: 38,
-        order: 2,
+        label: 'Locked',
+        percentage: 50,
+        order: 4,
+        count: 0
       }, {
-        value: 400,
+        value: 100,
         color: dashboardColors.blueStone,
         highlight: colorHelper.shade(dashboardColors.blueStone, 15),
-        label: 'Ad Campaigns',
-        percentage: 17,
-        order: 0,
+        label: 'rejected',
+        percentage: 50,
+        order: 5,
+        count: 0
       },
     ];
+  }
+
+  getAllUsers(user) {
+    let url = "uma/system/users?onlyCount=X" ;
+    let getPromise = this.restApi.getData(url)
+    getPromise.then(data => {
+        user.count     =  data["results"] ;
+    }).catch(error => {
+        console.log(error) ;
+    });
+  }
+
+  getGroupUsers() {
+    let url = "uma/system/users?groupBy=1" ;
+    return this.restApi.getData(url)
   }
 }

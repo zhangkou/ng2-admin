@@ -8,9 +8,9 @@ export class LineChartService {
   }
 
   getData() {
-
+    var defaultText = "#aaaaaa" ;
     var layoutColors = this._baConfig.get().colors;
-    var graphColor = this._baConfig.get().colors.custom.dashboardLineChart;
+    var graphColor = defaultText;//this._baConfig.get().colors.custom.dashboardLineChart;
 
     return {
       type: 'serial',
@@ -56,15 +56,15 @@ export class LineChartService {
       categoryAxis: {
         parseDates: true,
         gridAlpha: 0,
-        color: layoutColors.defaultText,
-        axisColor: layoutColors.defaultText
+        color: defaultText,
+        axisColor: defaultText
       },
       valueAxes: [
         {
           minVerticalGap: 50,
           gridAlpha: 0,
-          color: layoutColors.defaultText,
-          axisColor: layoutColors.defaultText
+          color: defaultText,
+          axisColor: defaultText
         }
       ],
       graphs: [

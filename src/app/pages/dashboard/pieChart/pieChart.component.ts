@@ -33,6 +33,10 @@ export class PieChart {
       //this._updatePieCharts();
       this._init = true;
     }
+    this._pieChartService.getAllUsers(this.charts[0]) ;
+    this._pieChartService.getActivedUsers(this.charts[1]) ;
+    this._pieChartService.getAllTask(this.charts[2]) ;
+    this._pieChartService.getFailedTask(this.charts[3]) ;
   }
 
   private _loadPieCharts() {

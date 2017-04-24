@@ -4,7 +4,7 @@
 
     <div class="pie-chart-item">
       <div class="chart" [attr.data-rel]="chart.color">
-        <span class="percent">{{ chart.percent }}</span>
+        <span class="percent" *ngIf="chart.percent">{{ chart.percent }}</span>
       </div>
       <div class="description">
         <div>{{ chart.description }}</div>
