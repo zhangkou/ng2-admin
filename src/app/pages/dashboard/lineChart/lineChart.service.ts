@@ -10,7 +10,7 @@ export class LineChartService {
   getData() {
     var defaultText = "#aaaaaa" ;
     var layoutColors = this._baConfig.get().colors;
-    var graphColor = defaultText;//this._baConfig.get().colors.custom.dashboardLineChart;
+    var graphColor = "#1b70ef";//this._baConfig.get().colors.custom.dashboardLineChart;
 
     return {
       type: 'serial',
