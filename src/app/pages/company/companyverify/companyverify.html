@@ -29,7 +29,7 @@
                  <td>{{ tdata.userId }}</td>
                  <td>{{ tdata.email }}</td>
                  <td>{{ tdata.company }}</td>
-                 <td>{{ tdata.createdTime }}</td>
+                 <td  style="white-space: nowrap;">{{ tdata.createdTime  | date:'MM-dd HH:mm:ss' }}</td>
                  <td>
                   <input type="text" class="form-control form-control-sm" name="companyid" id="companyid" 
                           #companyid
