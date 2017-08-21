@@ -11,7 +11,7 @@ export class RESTApi {
        
   }
 
-  getData(sourceUrl, paging?, currentPage?, itemsPerPage?, handleError?) {
+  getData(sourceUrl, paging?, currentPage?, itemsPerPage?, handleError = true) {
         let url = this.baseURL  + sourceUrl;
         if(paging){
             url = url + (url.indexOf("?") == -1 ? "?" : "&") + "pageIndex=" + currentPage + "&pageSize=" + itemsPerPage ;

@@ -72,7 +72,7 @@ export class AdminLogin {
 
   authenticate(email: String, password: String, companyId: String) {
     let creds = "users/login?email=" + email + "&password=" + password + "&cid=" + companyId ;
-    let getPromise = this.restApi.getData(creds)
+    let getPromise = this.restApi.getData(creds, undefined, undefined, undefined, false) ;
     getPromise.then(data => {
         this.token = data["page"].results[0].token ;
         this.appState.set("token", this.token) ;
