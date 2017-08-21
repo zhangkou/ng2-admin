@@ -43,7 +43,7 @@ export class PieChartService {
     let url = "uma/system/users?onlyCount=X" ;
     let getPromise = this.restApi.getData(url)
     getPromise.then(data => {
-        user.stats     =  data["results"] ;
+        user.stats     =  data["page"]["results"][0].totalCount ;
     }).catch(error => {
         console.log(error) ;
     });
@@ -53,7 +53,7 @@ export class PieChartService {
     let url = "uma/system/users?filter=login_status=1&onlyCount=X" ;
     let getPromise = this.restApi.getData(url)
     getPromise.then(data => {
-        user.stats     =  data["results"] ;
+        user.stats     =  data["page"]["results"][0].totalCount ;
     }).catch(error => {
         console.log(error) ;
     });
@@ -63,7 +63,7 @@ export class PieChartService {
     let url = "uma/system/tasks?onlyCount=X&filter=TIMESTAMPDIFF(SECOND, start_time, now()) <=86400" ;
     let getPromise = this.restApi.getData(url)
     getPromise.then(data => {
-        task.stats     =  data["results"] ;
+        task.stats     =  data["page"]["results"][0].totalCount ;
     }).catch(error => {
         console.log(error) ;
     });
@@ -73,7 +73,7 @@ export class PieChartService {
     let url = "uma/system/tasks?onlyCount=X&filter=TIMESTAMPDIFF(SECOND, start_time, now()) <=86400 and task_status=9" ;
     let getPromise = this.restApi.getData(url)
     getPromise.then(data => {
-        task.stats     =  data["results"] ;
+        task.stats     =  data["page"]["results"][0].totalCount ;
     }).catch(error => {
         console.log(error) ;
     });

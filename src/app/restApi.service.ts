@@ -11,7 +11,7 @@ export class RESTApi {
        
   }
 
-  getData(sourceUrl, paging?, currentPage?, itemsPerPage?) {
+  getData(sourceUrl, paging?, currentPage?, itemsPerPage?, handleError?) {
         let url = this.baseURL  + sourceUrl;
         if(paging){
             url = url + (url.indexOf("?") == -1 ? "?" : "&") + "pageIndex=" + currentPage + "&pageSize=" + itemsPerPage ;
@@ -28,7 +28,9 @@ export class RESTApi {
                     if (data.message_rest.type == 'S') {
                         resolve(data);
                     }else{
-                        this.handleError(data) ;
+                        if(handleError){
+                            this.handleError(data) ;
+                        }
                         reject(data);
                     }  
                 });

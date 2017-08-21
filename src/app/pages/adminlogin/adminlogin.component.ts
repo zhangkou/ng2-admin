@@ -46,6 +46,7 @@ export class AdminLogin {
     {id: "40288b8147cd16ce0147cd25940d0030", name: "Sample30"}
 
   ] ;
+  public message: String ;
 
   constructor(fb:FormBuilder, protected router: Router, protected http: Http, protected appState: AppState, protected restApi: RESTApi) {
     this.form = fb.group({
@@ -79,6 +80,7 @@ export class AdminLogin {
         this.router.navigate(["pages"]) ;
         console.log(this.appState.get("token")) ;
     }).catch(error => {
+        this.message = error.message_rest.text ;
         console.log(error) ;
     });
   }

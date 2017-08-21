@@ -34,8 +34,13 @@ export class TrafficChart {
           });
           that.doughnutData.forEach(u => {
             let user = mUsers.get(u["order"]+"") ;
-            u["value"] = user.count ;
-            u["count"] = user.count ;
+            if(user && user.count){
+              u["value"] = user.count ;
+              u["count"] = user.count ;
+            }else{
+              u["value"] = 0 ;
+              u["count"] = 0 ;
+            }
           });
         }  
         that._loadDoughnutCharts();

@@ -17,6 +17,7 @@ export class Login {
   public password:AbstractControl;
   public submitted:boolean = false;
   public token: String ;
+  public message: String ;
 
   constructor(fb:FormBuilder, protected router: Router, protected http: Http, protected appState: AppState) {
     this.form = fb.group({
@@ -41,6 +42,7 @@ export class Login {
           console.log(this.appState.get("token")) ;
         })
         .catch(error => {
+          this.message = error ;
           console.log(error) ;
         });
     }
