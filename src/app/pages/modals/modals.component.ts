@@ -10,8 +10,6 @@ import { DefaultModal } from './default-modal/default-modal.component';
 export class Modals {
 
   constructor(private modalService: NgbModal) {}
-
-  
   lgModalShow() {
     const activeModal = this.modalService.open(DefaultModal, {size: 'lg'});
     activeModal.componentInstance.modalHeader = 'Large Modal';

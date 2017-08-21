@@ -223,10 +223,18 @@ module.exports = function (options) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
        * See: https://github.com/angular/angular/issues/11580
        */
-      new ContextReplacementPlugin(
+      //new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        helpers.root('src') // location of your src
+      //  /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      //  helpers.root('src') // location of your src
+     // ),
+
+      new ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)@angular/,
+        helpers.root('src'), // location of your src
+        {
+          // your Angular Async Route paths relative to this root directory
+        }
       ),
 
       /*
