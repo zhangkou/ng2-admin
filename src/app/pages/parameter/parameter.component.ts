@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import { HttpModule , Http, ConnectionBackend, Headers, RequestOptions } from '@angular/http';
-import { MdSnackBar} from '@angular/material';
 import { BaseComponent } from '../base/base.component';
 import { AppState } from '../../app.service';
 import { RESTApi } from '../../restApi.service';
